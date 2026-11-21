@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Dataset_monthltattendance" targetNamespace="http://tempuri.org/Dataset_monthltattendance.xsd" xmlns:mstns="http://tempuri.org/Dataset_monthltattendance.xsd" xmlns="http://tempuri.org/Dataset_monthltattendance.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="PoultryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PoultryConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.PoultryConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="V_monthly_attendanceTableAdapter" GeneratorDataComponentClassName="V_monthly_attendanceTableAdapter" Name="V_monthly_attendance" UserDataComponentName="V_monthly_attendanceTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PoultryConnectionString (Web.config)" DbObjectName="Poultry.dbo.V_monthly_attendance" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT EmpName, AreaCode, AreaName, EmpType, WorkType, Sex, Status, id, empcode, loc, month, year, P, L, A, S, AL FROM dbo.V_monthly_attendance</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="EmpName" DataSetColumn="EmpName" />
+              <Mapping SourceColumn="AreaCode" DataSetColumn="AreaCode" />
+              <Mapping SourceColumn="AreaName" DataSetColumn="AreaName" />
+              <Mapping SourceColumn="EmpType" DataSetColumn="EmpType" />
+              <Mapping SourceColumn="WorkType" DataSetColumn="WorkType" />
+              <Mapping SourceColumn="Sex" DataSetColumn="Sex" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="empcode" DataSetColumn="empcode" />
+              <Mapping SourceColumn="loc" DataSetColumn="loc" />
+              <Mapping SourceColumn="month" DataSetColumn="month" />
+              <Mapping SourceColumn="year" DataSetColumn="year" />
+              <Mapping SourceColumn="P" DataSetColumn="P" />
+              <Mapping SourceColumn="L" DataSetColumn="L" />
+              <Mapping SourceColumn="A" DataSetColumn="A" />
+              <Mapping SourceColumn="S" DataSetColumn="S" />
+              <Mapping SourceColumn="AL" DataSetColumn="AL" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Dataset_monthltattendance" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="Dataset_monthltattendance" msprop:Generator_DataSetName="Dataset_monthltattendance">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="V_monthly_attendance" msprop:Generator_TableClassName="V_monthly_attendanceDataTable" msprop:Generator_TableVarName="tableV_monthly_attendance" msprop:Generator_TablePropName="V_monthly_attendance" msprop:Generator_RowDeletingName="V_monthly_attendanceRowDeleting" msprop:Generator_RowChangingName="V_monthly_attendanceRowChanging" msprop:Generator_RowEvHandlerName="V_monthly_attendanceRowChangeEventHandler" msprop:Generator_RowDeletedName="V_monthly_attendanceRowDeleted" msprop:Generator_UserTableName="V_monthly_attendance" msprop:Generator_RowChangedName="V_monthly_attendanceRowChanged" msprop:Generator_RowEvArgName="V_monthly_attendanceRowChangeEvent" msprop:Generator_RowClassName="V_monthly_attendanceRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EmpName" msprop:Generator_ColumnVarNameInTable="columnEmpName" msprop:Generator_ColumnPropNameInRow="EmpName" msprop:Generator_ColumnPropNameInTable="EmpNameColumn" msprop:Generator_UserColumnName="EmpName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AreaCode" msprop:Generator_ColumnVarNameInTable="columnAreaCode" msprop:Generator_ColumnPropNameInRow="AreaCode" msprop:Generator_ColumnPropNameInTable="AreaCodeColumn" msprop:Generator_UserColumnName="AreaCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AreaName" msprop:Generator_ColumnVarNameInTable="columnAreaName" msprop:Generator_ColumnPropNameInRow="AreaName" msprop:Generator_ColumnPropNameInTable="AreaNameColumn" msprop:Generator_UserColumnName="AreaName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EmpType" msprop:Generator_ColumnVarNameInTable="columnEmpType" msprop:Generator_ColumnPropNameInRow="EmpType" msprop:Generator_ColumnPropNameInTable="EmpTypeColumn" msprop:Generator_UserColumnName="EmpType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="WorkType" msprop:Generator_ColumnVarNameInTable="columnWorkType" msprop:Generator_ColumnPropNameInRow="WorkType" msprop:Generator_ColumnPropNameInTable="WorkTypeColumn" msprop:Generator_UserColumnName="WorkType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sex" msprop:Generator_ColumnVarNameInTable="columnSex" msprop:Generator_ColumnPropNameInRow="Sex" msprop:Generator_ColumnPropNameInTable="SexColumn" msprop:Generator_UserColumnName="Sex" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:int" minOccurs="0" />
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="empcode" msprop:Generator_ColumnVarNameInTable="columnempcode" msprop:Generator_ColumnPropNameInRow="empcode" msprop:Generator_ColumnPropNameInTable="empcodeColumn" msprop:Generator_UserColumnName="empcode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="loc" msprop:Generator_ColumnVarNameInTable="columnloc" msprop:Generator_ColumnPropNameInRow="loc" msprop:Generator_ColumnPropNameInTable="locColumn" msprop:Generator_UserColumnName="loc">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="month" msprop:Generator_ColumnVarNameInTable="columnmonth" msprop:Generator_ColumnPropNameInRow="month" msprop:Generator_ColumnPropNameInTable="monthColumn" msprop:Generator_UserColumnName="month" type="xs:int" />
+              <xs:element name="year" msprop:Generator_ColumnVarNameInTable="columnyear" msprop:Generator_ColumnPropNameInRow="year" msprop:Generator_ColumnPropNameInTable="yearColumn" msprop:Generator_UserColumnName="year" type="xs:int" />
+              <xs:element name="P" msprop:Generator_ColumnVarNameInTable="columnP" msprop:Generator_ColumnPropNameInRow="P" msprop:Generator_ColumnPropNameInTable="PColumn" msprop:Generator_UserColumnName="P" type="xs:int" minOccurs="0" />
+              <xs:element name="L" msprop:Generator_ColumnVarNameInTable="columnL" msprop:Generator_ColumnPropNameInRow="L" msprop:Generator_ColumnPropNameInTable="LColumn" msprop:Generator_UserColumnName="L" type="xs:int" minOccurs="0" />
+              <xs:element name="A" msprop:Generator_ColumnVarNameInTable="columnA" msprop:Generator_ColumnPropNameInRow="A" msprop:Generator_ColumnPropNameInTable="AColumn" msprop:Generator_UserColumnName="A" type="xs:int" minOccurs="0" />
+              <xs:element name="S" msprop:Generator_ColumnVarNameInTable="_columnS" msprop:Generator_ColumnPropNameInRow="S" msprop:Generator_ColumnPropNameInTable="SColumn" msprop:Generator_UserColumnName="S" type="xs:int" minOccurs="0" />
+              <xs:element name="AL" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAL" msprop:Generator_ColumnPropNameInRow="AL" msprop:Generator_ColumnPropNameInTable="ALColumn" msprop:Generator_UserColumnName="AL" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:V_monthly_attendance" />
+      <xs:field xpath="mstns:empcode" />
+      <xs:field xpath="mstns:loc" />
+      <xs:field xpath="mstns:month" />
+      <xs:field xpath="mstns:year" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

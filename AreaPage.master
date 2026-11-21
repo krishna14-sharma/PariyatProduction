@@ -1,0 +1,144 @@
+﻿<%@ Master Language="VB" CodeFile="AreaPage.master.vb" Inherits="AreaPage" %>
+<%@ Register TagPrefix="app" Namespace="PoultryApp.Controls" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Farm Operations | Phoenix Poultry</title>
+    <link rel="icon" href="~/loginforms/images/icons/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="~/Content/app.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="app">
+    <script src="<%= ResolveUrl("~/Scripts/app.js") %>"></script>
+    <div id="appProgress" class="app-progress"></div>
+
+    <header class="app-header">
+        <div class="app-brandbar">
+            <a class="app-brand" href="~/Default_Area.aspx" runat="server" title="Home">
+                <img src="~/images/phoenix_logo.jpg" alt="Phoenix" runat="server" />
+                <span class="app-module">Farm Operations</span>
+            </a>
+            <div class="app-user">
+                <span class="app-avatar" aria-hidden="true"><%: UserInitial %></span>
+                <span class="app-user-text">
+                    <strong><%: CurrentUserName %></strong>
+                    <small><%: CurrentLocation %></small>
+                </span>
+                <a class="app-signout" href="~/Logout.aspx" runat="server">Sign out</a>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark app-nav" aria-label="Main menu">
+            <div class="container-fluid px-0">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#appMenu" aria-controls="appMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="appMenu">
+                <ul class="navbar-nav me-auto">
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Daily Shed Entry
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/dailyentryforms/Daily_eggcollection.aspx" runat="server">Daily Egg Collection</a></li>
+                            <li><a class="dropdown-item" href="~/dailyentryforms/Daily_feedegg.aspx" runat="server">Daily Feed Egg Entry</a></li>
+                            <li><a class="dropdown-item" href="~/dailyentryforms/Daily_mortality_pit.aspx" runat="server">Daily Mortality Pit Entry</a></li>
+                            <li><a class="dropdown-item" href="~/dailyentryforms/Daily_Morning_Mortality.aspx" runat="server">Morning Mortality Entry</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="~/dailyentryforms/Daily_shed_temp.aspx" runat="server">Farm Weather Info</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Medicine &amp; Transfer
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/dailyentryforms/DailyMedicineReceived.aspx" runat="server">Medicine Received</a></li>
+                            <li><a class="dropdown-item" href="~/dailyentryforms/Daily_MedicineIssueToShed.aspx" runat="server">Medicine Issue</a></li>
+                            <li><a class="dropdown-item" href="~/reports/Medi_balance_stock.aspx" runat="server">Medicine Stock (Farm)</a></li>
+                            <li><a class="dropdown-item" href="~/dailyentryforms/DailyPmEntry.aspx" runat="server">Daily PM Entry</a></li>
+                            <li><a class="dropdown-item" href="~/transforms/BirdTransfer.aspx" runat="server">Bird Transfer</a></li>
+                            <li><a class="dropdown-item" href="~/dailyentryforms/Daily_bird_sepration_entry.aspx" runat="server">Separated/Chattan Birds</a></li>
+                            <li><a class="dropdown-item" href="~/dailyentryforms/Grading_Entry.aspx" runat="server">Bird Grading</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Inventory &amp; Feed
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/dailyentryforms/DailyIremReceived.aspx" runat="server">Material From Store</a></li>
+                            <li><a class="dropdown-item" href="~/dailyentryforms/Daily_ItemissueToShed.aspx" runat="server">Issue To Shed</a></li>
+                            <li><a class="dropdown-item" href="~/reports/balance_stock.aspx" runat="server">Balance Stock</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="~/dailyentryforms/FeedReceived.aspx" runat="server">Receive Feed</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Attendance
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/dailyentryforms/Daily_Attendance.aspx" runat="server">Monthly Staff</a></li>
+                            <%--<li><a class="dropdown-item" href="~/dailyentryforms/Daily_Att_WeeklyStaff.aspx" runat="server">Weekly Staff</a></li>--%>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reports
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/reports/shedinfomationreport_temp.aspx" runat="server">Shed Info (Temp)</a></li>
+                            <li><a class="dropdown-item" href="~/reports/frmShedReport.aspx" runat="server">Shed Production</a></li>
+                            <li><a class="dropdown-item" href="~/reports/Flock_Weekly_report.aspx" runat="server">Weekly Report</a></li>
+                            <li><a class="dropdown-item" href="~/reports/pm_report.aspx" runat="server">PM Report</a></li>
+                            <li><a class="dropdown-item" href="~/reports/frmAreaFlockReport.aspx" runat="server">Flock Production</a></li>
+                            <li><a class="dropdown-item" href="~/reports/Chattan_report.aspx" runat="server">Chattan Report</a></li>
+                            <li><a class="dropdown-item" href="~/reports/Daily_temperature_report.aspx" runat="server">Temperature Report</a></li>
+                            <li><a class="dropdown-item" href="~/reports/dailyatt_repo.aspx" runat="server">Attendance (Monthly)</a></li>
+                            <%--<li><a class="dropdown-item" href="~/reports/weeklystaff_att_report.aspx" runat="server">Attendance (Weekly)</a></li>--%>
+                        </ul>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <form id="form1" runat="server">
+        <%-- AJAX: partial rendering is switched off automatically on report-viewer / upload pages (see App_code/AppAjax.vb) --%>
+        <app:AppScriptManager ID="AppScriptManager" runat="server" EnablePartialRendering="true" AsyncPostBackTimeout="3600" />
+
+        <div id="appBusy" class="app-busy" aria-hidden="true">
+            <div class="app-busy-box"><span class="app-spinner"></span>Please wait&hellip;</div>
+        </div>
+
+        <main class="app-main">
+            <div class="container-xl">
+                <asp:UpdatePanel ID="AppUpdatePanel" runat="server" UpdateMode="Always" ChildrenAsTriggers="true">
+                    <ContentTemplate>
+                        <div class="app-content">
+                            <asp:ContentPlaceHolder ID="AreaMaster" runat="server">
+                                <asp:Label ID="lblString" runat="server" />
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        </main>
+    </form>
+
+    <footer class="app-footer">&copy; <%: DateTime.Now.Year %> Phoenix Group &middot; Poultry Management System</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

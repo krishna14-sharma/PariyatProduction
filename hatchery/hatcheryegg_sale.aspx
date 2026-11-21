@@ -1,0 +1,272 @@
+﻿<%@ Page Language="VB" AutoEventWireup="false" MasterPageFile="~/SiteMasterHatch.master" CodeFile="hatcheryegg_sale.aspx.vb" Inherits="hatchery_hatcheryegg_sale" %>
+
+<asp:Content ID="BodyContent_hatch" ContentPlaceHolderID="SiteMasterHatch" runat="server">
+    <div class="container" style="background-color:lightcyan">
+                            <table class="table table-bordered table-striped table-hover align-right">
+                        <tbody>
+                            <tr>
+                                <td colspan="5" valign="middle" align="center" rowspan="1">
+                                    <h3>&nbsp;Hatching Eggs 
+							Sale &nbsp;Entry</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sale Date</td>
+                                <td align="left">
+                                    <asp:TextBox ID="entrydate" TextMode="Date" runat="server" /></td>
+                            </tr>
+                            <tr>
+                                <td>Egg Collection Date</td>
+                                <td>
+                                    <asp:TextBox ID="eggcolldate" TextMode="Date" runat="server" /></td>
+                                <td>
+                                    <asp:TextBox ID="toeggcolldate" TextMode="Date" runat="server" /></td>
+                            </tr>
+                            <tr>
+                                <td>Flock Type</td>
+                                <td>
+                                    <asp:DropDownList ID="ftype" runat="server" /></td>
+                            </tr>
+                              <tr>
+                                <td>Area Name</td>
+                                <td>
+                                    <asp:DropDownList ID="cmbAreaName" runat="server" />
+                                    <asp:Button ID="btnShowArea" runat="server" Text="Show Flock" />
+                                </td>
+                            </tr> 
+                            <tr>
+                                <td>Flock No</td>
+                                <td>
+                                    <asp:DropDownList ID="flockno" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Age (Desirable)</td>
+                                <td>
+                                    <asp:Label ID="LblAge" runat="server" /></td>
+                                <td>
+
+                                    <asp:Button ID="Button1" runat="server" Text="Show" />
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hathery </td>
+                                <td>
+                                    <asp:DropDownList ID="cmbloc" runat="server" AutoPostBack="True"></asp:DropDownList></td>
+                                <td>
+                                    <asp:DropDownList ID="cmbshed" runat="server"></asp:DropDownList></td>
+
+                                <td>
+                                    <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+                                </td>
+                            </tr>
+                </table>
+                     <table class="table table-bordered table-striped table-hover text-center align-right">
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label1" runat="server" Text="Stock Eggs" Font-Bold="True" ForeColor="#0033CC" /></td>
+                                <td>
+                                    <asp:Label ID="Label2" runat="server" Text="Total Eggs" Font-Bold="True" ForeColor="#003399" /></td>
+                                <td>
+                                    <asp:Label ID="Label3" runat="server" Text="Billing Eggs" Font-Bold="True" ForeColor="#FF5050" /></td>
+                                <td>
+                                    <asp:Label ID="Label4" runat="server" Text="Rate" Font-Bold="True" ForeColor="#CC0066" /></td>
+                                <td>
+                                    Amount</td>
+                            </tr>
+
+                            <tr>
+                                <td>Fresh
+                                    <asp:Label ID="lblfresh" runat="server" Font-Bold="True" ForeColor="#33CC33" Font-Size="Large" /></td>
+                                <td>
+                                    <asp:TextBox ID="fresh" runat="server" Width="100px" />
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="freshset" runat="server" Width="100px" /></td>
+                                <td>
+                                    <asp:TextBox ID="freshrej" runat="server" ReadOnly="false" Width="50px" /></td>
+                                <td>
+                                    <asp:TextBox ID="fresh_leaker" runat="server" ReadOnly="True" Width="100px" /></td>
+                            </tr>
+                            <tr>
+                                <td>Big Size
+                                    <asp:Label ID="lblbigsize" runat="server" Font-Bold="True" ForeColor="#FF6600" Font-Size="Large" /></td>
+                                <td>
+                                    <asp:TextBox ID="bigsize" runat="server" Width="100px" /></td>
+                                <td>
+                                    <asp:TextBox ID="bigsizeset" runat="server" Width="100px" /></td>
+                                <td>
+                                    <asp:TextBox ID="bigsizerej" runat="server" ReadOnly="false" Width="50px" /></td>
+                                <td>
+                                    <asp:TextBox ID="bigsize_leaker" runat="server" ReadOnly="True" Width="100px" /></td>
+                            </tr>
+                            <tr>
+                                <td>MD
+                                    <asp:Label ID="lblmd" runat="server" Font-Bold="True" ForeColor="#FF0066" Font-Size="Large" /></td>
+                                <td>
+                                    <asp:TextBox ID="md" runat="server" Width="100px" /></td>
+                                <td>
+                                    <asp:TextBox ID="mdset" runat="server" Width="100px" /></td>
+                                <td>
+                                    <asp:TextBox ID="mdrej" runat="server" ReadOnly="false" Width="50px" /></td>
+                                <td>
+                                    <asp:TextBox ID="md_leaker" runat="server" ReadOnly="true" Width="100px" /></td>
+                            </tr>
+
+                            <tr>
+                                <td>M+
+                                    <asp:Label ID="lblmplus" runat="server" Font-Bold="True" ForeColor="#3399FF" Font-Size="Large" /></td>
+                                <td>
+                                    <asp:TextBox ID="mplus" runat="server" Width="100px" /></td>
+                                <td>
+                                    <asp:TextBox ID="mplusset" runat="server" Width="100px" /></td>
+                                <td>
+                                    <asp:TextBox ID="mplusrej" runat="server" ReadOnly="false" Width="50px" /></td>
+                                <td>
+                                    <asp:TextBox ID="mplus_leaker" runat="server" ReadOnly="True" Width="100px" /></td>
+                            </tr>
+                            <tr>
+                                <td>M-<asp:Label ID="lblmminus" runat="server" Font-Bold="True" ForeColor="#3366CC" Font-Size="Large" /></td>
+                                <td>
+                                    <asp:TextBox ID="mminus" runat="server" Width="100px" /></td>
+                                <td>
+                                    <asp:TextBox ID="mminusset" runat="server" Width="100px" /></td>
+                                <td>
+                                    <asp:TextBox ID="mminusrej" runat="server" ReadOnly="false" Width="50px" /></td>
+                                <td>
+                                    <asp:TextBox ID="mminus_leaker" runat="server" ReadOnly="True" Width="100px" /></td>
+                            </tr>
+                            <tr>
+                                <td>Comm
+                                    <asp:Label ID="lblhcomm" runat="server" Font-Bold="True" ForeColor="#CC00FF" Font-Size="Large" /></td>
+
+                                <td>
+                                    <asp:TextBox ID="hcomm" runat="server" Width="100px" /></td>
+                                <td>
+                                    <asp:TextBox ID="hcommser" runat="server" Width="100px" /></td>
+                                <td>
+                                    <asp:TextBox ID="hcommrej" runat="server" ReadOnly="false" Width="50px" /></td>
+                                <td>
+                                    <asp:TextBox ID="hcomm_leaker" runat="server" ReadOnly="True" Width="100px" /></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="5">&nbsp;
+                        <asp:Label ID="lblString" runat="server" Font-Bold="True" ForeColor="#FF3300" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="centre">
+                                    <asp:Button runat="server" ID="btnsave" Text="OK(SAVE)" />
+                                </td>
+                                <td>
+                                    <asp:Button runat="server" ID="cancel" Text="Show Data" />
+                                    <asp:Button runat="server" ID="cancel0" Text="Cancel" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                       <table>
+            <tr>
+                <td>
+                    <asp:DataGrid ID="hatch_setter" runat="server" AutoGenerateColumns="true" GridLines="Both" class="table table-striped table-hover">
+                        <AlternatingItemStyle BackColor="#ffffcc"></AlternatingItemStyle>
+                    </asp:DataGrid>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        //document.getElementById('AreaMaster_entrydate').value = new Date().toISOString().substring(0, 10);
+
+        // $(document).ready(function () {
+
+        function sum() {
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_fresh').value);
+            document.getElementById('SiteMasterHatch_freshset').value =  (txtValue * 100/102 ).toFixed(0);
+            
+        }
+
+        function calcamt() {
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_freshrej').value);
+            document.getElementById('SiteMasterHatch_fresh_leaker').value = txtValue * document.getElementById('SiteMasterHatch_freshset').value;
+            }
+
+
+
+        function sum1() {
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_bigsize').value);
+            document.getElementById('SiteMasterHatch_bigsizeset').value = (txtValue * 100 / 102).toFixed(0);
+           
+        }
+
+        function calcamt1() {
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_bigsizerej').value);
+            document.getElementById('SiteMasterHatch_bigsize_leaker').value = txtValue * document.getElementById('SiteMasterHatch_bigsizeset').value;
+        }
+
+
+        function sum2() {
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_md').value);
+            document.getElementById('SiteMasterHatch_mdset').value = (txtValue * 100 / 102).toFixed(0);
+            //var txtFirstNumberValue = parseInt(document.getElementById('SiteMasterHatch_mdset').value);
+            //var txtSecondNumberValue = parseInt(document.getElementById('SiteMasterHatch_mdrej').value);
+            //var result = parseInt(txtValue) - parseInt(txtFirstNumberValue) - parseInt(txtSecondNumberValue)
+            //document.getElementById('SiteMasterHatch_md_leaker').value = result;
+        }
+
+        function calcamt2() {
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_mdrej').value);
+            document.getElementById('SiteMasterHatch_md_leaker').value = txtValue * document.getElementById('SiteMasterHatch_mdset').value;
+        }
+
+
+        function sum3() {
+
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_mplus').value);
+            document.getElementById('SiteMasterHatch_mplusset').value = (txtValue * 100 / 102).toFixed(0);
+            //var txtFirstNumberValue = parseInt(document.getElementById('SiteMasterHatch_mplusset').value);
+            //var txtSecondNumberValue = parseInt(document.getElementById('SiteMasterHatch_mplusrej').value);
+            //var result = parseInt(txtValue) - parseInt(txtFirstNumberValue) - parseInt(txtSecondNumberValue)
+            //document.getElementById('SiteMasterHatch_mplus_leaker').value = result;
+        }
+
+        function calcamt3() {
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_mplusrej').value);
+            document.getElementById('SiteMasterHatch_mplus_leaker').value = txtValue * document.getElementById('SiteMasterHatch_mplusset').value;
+        }
+
+        function sum4() {
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_mminus').value);
+            document.getElementById('SiteMasterHatch_mminusset').value = (txtValue * 100 / 102).toFixed(0);
+           // var txtFirstNumberValue = parseInt(document.getElementById('SiteMasterHatch_mminusset').value);
+            //var txtSecondNumberValue = parseInt(document.getElementById('SiteMasterHatch_mminusrej').value);
+            //var result = parseInt(txtValue) - parseInt(txtFirstNumberValue) - parseInt(txtSecondNumberValue)
+            //document.getElementById('SiteMasterHatch_mminus_leaker').value = result;
+        }
+
+        function calcamt4() {
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_mminusrej').value);
+            document.getElementById('SiteMasterHatch_mminus_leaker').value = txtValue * document.getElementById('SiteMasterHatch_mminusset').value;
+        }
+
+        function sum5() {
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_hcomm').value);
+            document.getElementById('SiteMasterHatch_hcommser').value = (txtValue * 100 / 102).toFixed(0);
+           // var txtFirstNumberValue = parseInt(document.getElementById('SiteMasterHatch_hcommser').value);
+            //var txtSecondNumberValue = parseInt(document.getElementById('SiteMasterHatch_hcommrej').value);
+            //var result = parseInt(txtValue) - parseInt(txtFirstNumberValue) - parseInt(txtSecondNumberValue)
+            //document.getElementById('SiteMasterHatch_hcomm_leaker').value = result;
+        }
+
+        function calcamt5() {
+            var txtValue = parseFloat(document.getElementById('SiteMasterHatch_hcommrej').value);
+            document.getElementById('SiteMasterHatch_hcomm_leaker').value = txtValue * document.getElementById('SiteMasterHatch_hcommser').value;
+        }
+
+    </script>
+</asp:Content>

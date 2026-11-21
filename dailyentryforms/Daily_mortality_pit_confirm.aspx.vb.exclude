@@ -1,0 +1,5 @@
+﻿
+Partial Class dailyentryforms_Daily_mortality_pit_confirm
+    Inherits System.Web.UI.Page
+
+End Class

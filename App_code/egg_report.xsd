@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="egg_report" targetNamespace="http://tempuri.org/egg_report.xsd" xmlns:mstns="http://tempuri.org/egg_report.xsd" xmlns="http://tempuri.org/egg_report.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="PoultryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PoultryConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.PoultryConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="egg_reportTableAdapter" GeneratorDataComponentClassName="egg_reportTableAdapter" Name="egg_report" UserDataComponentName="egg_reportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PoultryConnectionString (Web.config)" DbObjectName="Poultry.dbo.egg_report" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Weeks, comm_eggs, crack_eggs, leaker_eggs, hatch_eggs, total_eggs FROM dbo.egg_report</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Weeks" DataSetColumn="Weeks" />
+              <Mapping SourceColumn="comm_eggs" DataSetColumn="comm_eggs" />
+              <Mapping SourceColumn="crack_eggs" DataSetColumn="crack_eggs" />
+              <Mapping SourceColumn="leaker_eggs" DataSetColumn="leaker_eggs" />
+              <Mapping SourceColumn="hatch_eggs" DataSetColumn="hatch_eggs" />
+              <Mapping SourceColumn="total_eggs" DataSetColumn="total_eggs" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="egg_report" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="egg_report" msprop:Generator_DataSetName="egg_report">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="egg_report" msprop:Generator_TableClassName="egg_reportDataTable" msprop:Generator_TableVarName="tableegg_report" msprop:Generator_TablePropName="_egg_report" msprop:Generator_RowDeletingName="egg_reportRowDeleting" msprop:Generator_RowChangingName="egg_reportRowChanging" msprop:Generator_RowEvHandlerName="egg_reportRowChangeEventHandler" msprop:Generator_RowDeletedName="egg_reportRowDeleted" msprop:Generator_UserTableName="egg_report" msprop:Generator_RowChangedName="egg_reportRowChanged" msprop:Generator_RowEvArgName="egg_reportRowChangeEvent" msprop:Generator_RowClassName="egg_reportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Weeks" msprop:Generator_ColumnVarNameInTable="columnWeeks" msprop:Generator_ColumnPropNameInRow="Weeks" msprop:Generator_ColumnPropNameInTable="WeeksColumn" msprop:Generator_UserColumnName="Weeks" type="xs:int" minOccurs="0" />
+              <xs:element name="comm_eggs" msprop:Generator_ColumnVarNameInTable="columncomm_eggs" msprop:Generator_ColumnPropNameInRow="comm_eggs" msprop:Generator_ColumnPropNameInTable="comm_eggsColumn" msprop:Generator_UserColumnName="comm_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="crack_eggs" msprop:Generator_ColumnVarNameInTable="columncrack_eggs" msprop:Generator_ColumnPropNameInRow="crack_eggs" msprop:Generator_ColumnPropNameInTable="crack_eggsColumn" msprop:Generator_UserColumnName="crack_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="leaker_eggs" msprop:Generator_ColumnVarNameInTable="columnleaker_eggs" msprop:Generator_ColumnPropNameInRow="leaker_eggs" msprop:Generator_ColumnPropNameInTable="leaker_eggsColumn" msprop:Generator_UserColumnName="leaker_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="hatch_eggs" msprop:Generator_ColumnVarNameInTable="columnhatch_eggs" msprop:Generator_ColumnPropNameInRow="hatch_eggs" msprop:Generator_ColumnPropNameInTable="hatch_eggsColumn" msprop:Generator_UserColumnName="hatch_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total_eggs" msprop:Generator_ColumnVarNameInTable="columntotal_eggs" msprop:Generator_ColumnPropNameInRow="total_eggs" msprop:Generator_ColumnPropNameInTable="total_eggsColumn" msprop:Generator_UserColumnName="total_eggs" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

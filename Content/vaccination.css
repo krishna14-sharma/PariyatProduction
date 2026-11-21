@@ -1,0 +1,85 @@
+/* ==========================================================================
+   Vaccination & Medication Schedule pages (Administration)
+   Self-contained: works with the site's Bootstrap 5 master page; no other site CSS needed.
+   ========================================================================== */
+.vacc {
+    --app-ink: #1c2733; --app-muted: #5b6878; --app-line: #dfe4ea;
+    --app-accent: #2a6f9e; --app-accent-dark: #1f5679; --app-accent-soft: #e7f0f7;
+    --app-radius: 10px;
+    color: var(--app-ink);
+}
+.vacc h3 { font-size: 1.25rem; font-weight: 600; padding-bottom: 12px; margin-bottom: 16px; border-bottom: 1px solid var(--app-line); }
+.vacc label { font-weight: 500; font-size: .88rem; color: var(--app-muted); margin-bottom: 4px; }
+.vacc .btn-primary { background: var(--app-accent); border-color: var(--app-accent); }
+.vacc .btn-primary:hover { background: var(--app-accent-dark); border-color: var(--app-accent-dark); }
+.vacc .table th { background: #f6f8fa; color: var(--app-muted); font-weight: 600; text-transform: uppercase; font-size: .74rem; letter-spacing: .03em; }
+.vacc .table { font-size: .9rem; }
+.vacc-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.vacc-message { white-space: normal; }
+
+.vacc-muted { color: var(--app-muted); font-size: .8rem; }
+.vacc-link { font-weight: 600; color: var(--app-accent-dark); text-decoration: none; }
+.vacc-link:hover { text-decoration: underline; }
+.vacc-due { border: 1px solid var(--app-line); border-radius: var(--app-radius); padding: 14px 16px; margin-bottom: 20px; background: #fbfcfd; }
+.vacc-due-head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; margin-bottom: 8px; }
+.vacc-due .table { margin-bottom: 0; background: transparent; }
+.vacc-due p { margin: 0; }
+.vacc-filters { display: flex; flex-wrap: wrap; gap: 14px 18px; align-items: flex-end; margin-bottom: 8px; }
+.vacc-field { display: flex; flex-direction: column; min-width: 170px; }
+.vacc-field-wide { min-width: 260px; flex: 1 1 260px; max-width: 420px; }
+.vacc-field label { display: block; }
+.vacc-toggle { display: inline-flex; border: 1px solid #cdd5de; border-radius: 8px; overflow: hidden; }
+.vacc-toggle input { position: absolute; opacity: 0; pointer-events: none; }
+.vacc-toggle label { margin: 0 !important; padding: 7px 16px; cursor: pointer; color: var(--app-ink) !important; font-weight: 600 !important; font-size: .9rem !important; }
+.vacc-toggle input:checked + label { background: var(--app-accent); color: #fff !important; }
+.vacc-toggle input:focus-visible + label { outline: 2px solid var(--app-accent); outline-offset: -2px; }
+.vacc-note { background: var(--app-accent-soft); border: 1px solid #c4dbeb; color: var(--app-accent-dark); border-radius: 8px; padding: 8px 12px; font-size: .88rem; margin: 8px 0 0; }
+.vacc-note.is-warn { background: #fff7e6; border-color: #f1d49b; color: #7a4b00; }
+.vacc-flockinfo { margin: 18px 0 12px; font-size: .95rem; }
+.vacc-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.vacc-stat { border: 1px solid var(--app-line); border-radius: 8px; padding: 10px 12px; border-top: 3px solid #c7d0da; }
+.vacc-stat span { display: block; font-size: .76rem; color: var(--app-muted); text-transform: uppercase; letter-spacing: .03em; }
+.vacc-stat strong { font-size: 1.35rem; font-weight: 700; }
+.vacc-stat.is-ontime { border-top-color: #1e7f4f; }
+.vacc-stat.is-late { border-top-color: #c26a00; }
+.vacc-stat.is-overdue { border-top-color: #b3261e; }
+.vacc-stat.is-soon { border-top-color: var(--app-accent); }
+.vacc-toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: center; margin-bottom: 10px; }
+.vacc-filter-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.vacc-chip { border: 1px solid #cdd5de; background: #fff; border-radius: 999px; padding: 4px 12px; font-size: .84rem; color: var(--app-ink); cursor: pointer; }
+.vacc-chip.is-active { background: var(--app-ink); border-color: var(--app-ink); color: #fff; }
+.vacc-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.vacc-table { min-width: 1080px; }
+.vacc-table td { vertical-align: top; }
+.vacc-table tr.is-overdue > td:first-child { box-shadow: inset 3px 0 0 #b3261e; }
+.vacc-table tr.is-late > td:first-child { box-shadow: inset 3px 0 0 #c26a00; }
+.vacc-table tr.is-today > td:first-child, .vacc-table tr.is-soon > td:first-child { box-shadow: inset 3px 0 0 var(--app-accent); }
+.vacc-table tr.is-overdue > td { background: #fdf3f2; }
+.vacc-table tr.has-error > td { background: #fdecea; }
+.vacc-table tr.needs-reason .vacc-reason { border-color: #c26a00; background: #fffaf2; }
+.vacc-table tr.has-error.needs-reason .vacc-reason, .vacc-table tr.has-error .vacc-given-input { border-color: #b3261e; }
+.vacc-name { font-weight: 600; }
+.vacc-age { font-weight: 600; white-space: nowrap; }
+.vacc-date { white-space: nowrap; }
+.vacc-given { display: flex; gap: 6px; align-items: center; min-width: 190px; }
+.vacc-today { border: 1px solid #cdd5de; background: #fff; border-radius: 6px; font-size: .75rem; padding: 4px 8px; color: var(--app-accent-dark); cursor: pointer; white-space: nowrap; }
+.vacc-reason { min-width: 190px; }
+.vacc-by { margin-top: 4px; }
+.vacc-badge { display: inline-block; white-space: nowrap; border-radius: 999px; padding: 2px 10px; font-size: .78rem; font-weight: 600; background: #eef1f4; color: var(--app-muted); }
+.vacc-badge.is-ontime, .vacc-badge.is-early { background: #e3f3ea; color: #1e7f4f; }
+.vacc-badge.is-late { background: #fff1de; color: #9a5300; }
+.vacc-badge.is-overdue { background: #fde3e1; color: #b3261e; }
+.vacc-badge.is-today, .vacc-badge.is-soon { background: var(--app-accent-soft); color: var(--app-accent-dark); }
+.vacc-badge.is-phase { background: #efe9f8; color: #5b3a8c; margin-top: 4px; }
+.vacc-sex { font-size: .72rem; font-weight: 700; border-radius: 4px; padding: 1px 6px; margin-left: 4px; }
+.vacc-sex-F { background: #fbe7f1; color: #9b2c62; }
+.vacc-sex-M { background: #e4eefb; color: #1f4f8a; }
+.vacc-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px; }
+.vacc-close { color: var(--app-muted); font-weight: 500; font-size: .85rem; }
+.vacc-notes { margin-top: 20px; border-top: 1px solid var(--app-line); padding-top: 14px; font-size: .88rem; }
+.vacc-notes ol { margin: 8px 0 0; padding-left: 20px; color: var(--app-muted); }
+@media print {
+    .vacc-due, .vacc-filters, .vacc-toolbar, .vacc-footer, .vacc-today, .vacc-note { display: none !important; }
+    .vacc-table { min-width: 0; font-size: 9pt; }
+    .vacc-table input { border: 0 !important; padding: 0 !important; background: none !important; }
+}

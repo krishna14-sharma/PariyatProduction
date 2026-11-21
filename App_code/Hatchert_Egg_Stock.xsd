@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Hatchert_Egg_Stock" targetNamespace="http://tempuri.org/Hatchert_Egg_Stock.xsd" xmlns:mstns="http://tempuri.org/Hatchert_Egg_Stock.xsd" xmlns="http://tempuri.org/Hatchert_Egg_Stock.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="PoultryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PoultryConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.PoultryConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="hatchery_egg_stockTableAdapter" GeneratorDataComponentClassName="hatchery_egg_stockTableAdapter" Name="hatchery_egg_stock" UserDataComponentName="hatchery_egg_stockTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PoultryConnectionString (Web.config)" DbObjectName="Poultry.dbo.hatchery_egg_stock" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT flock_no, hatch_eggs, fresh_eggs, bigsize_eggs, md_eggs, mplus_eggs, mminus_eggs, hcomm_eggs FROM dbo.hatchery_egg_stock</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="flock_no" DataSetColumn="flock_no" />
+              <Mapping SourceColumn="hatch_eggs" DataSetColumn="hatch_eggs" />
+              <Mapping SourceColumn="fresh_eggs" DataSetColumn="fresh_eggs" />
+              <Mapping SourceColumn="bigsize_eggs" DataSetColumn="bigsize_eggs" />
+              <Mapping SourceColumn="md_eggs" DataSetColumn="md_eggs" />
+              <Mapping SourceColumn="mplus_eggs" DataSetColumn="mplus_eggs" />
+              <Mapping SourceColumn="mminus_eggs" DataSetColumn="mminus_eggs" />
+              <Mapping SourceColumn="hcomm_eggs" DataSetColumn="hcomm_eggs" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Hatchert_Egg_Stock" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="Hatchert_Egg_Stock" msprop:Generator_DataSetName="Hatchert_Egg_Stock">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="hatchery_egg_stock" msprop:Generator_TableClassName="hatchery_egg_stockDataTable" msprop:Generator_TableVarName="tablehatchery_egg_stock" msprop:Generator_TablePropName="hatchery_egg_stock" msprop:Generator_RowDeletingName="hatchery_egg_stockRowDeleting" msprop:Generator_RowChangingName="hatchery_egg_stockRowChanging" msprop:Generator_RowEvHandlerName="hatchery_egg_stockRowChangeEventHandler" msprop:Generator_RowDeletedName="hatchery_egg_stockRowDeleted" msprop:Generator_UserTableName="hatchery_egg_stock" msprop:Generator_RowChangedName="hatchery_egg_stockRowChanged" msprop:Generator_RowEvArgName="hatchery_egg_stockRowChangeEvent" msprop:Generator_RowClassName="hatchery_egg_stockRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="flock_no" msprop:Generator_ColumnVarNameInTable="columnflock_no" msprop:Generator_ColumnPropNameInRow="flock_no" msprop:Generator_ColumnPropNameInTable="flock_noColumn" msprop:Generator_UserColumnName="flock_no">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="hatch_eggs" msprop:Generator_ColumnVarNameInTable="columnhatch_eggs" msprop:Generator_ColumnPropNameInRow="hatch_eggs" msprop:Generator_ColumnPropNameInTable="hatch_eggsColumn" msprop:Generator_UserColumnName="hatch_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fresh_eggs" msprop:Generator_ColumnVarNameInTable="columnfresh_eggs" msprop:Generator_ColumnPropNameInRow="fresh_eggs" msprop:Generator_ColumnPropNameInTable="fresh_eggsColumn" msprop:Generator_UserColumnName="fresh_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="bigsize_eggs" msprop:Generator_ColumnVarNameInTable="columnbigsize_eggs" msprop:Generator_ColumnPropNameInRow="bigsize_eggs" msprop:Generator_ColumnPropNameInTable="bigsize_eggsColumn" msprop:Generator_UserColumnName="bigsize_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="md_eggs" msprop:Generator_ColumnVarNameInTable="columnmd_eggs" msprop:Generator_ColumnPropNameInRow="md_eggs" msprop:Generator_ColumnPropNameInTable="md_eggsColumn" msprop:Generator_UserColumnName="md_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="mplus_eggs" msprop:Generator_ColumnVarNameInTable="columnmplus_eggs" msprop:Generator_ColumnPropNameInRow="mplus_eggs" msprop:Generator_ColumnPropNameInTable="mplus_eggsColumn" msprop:Generator_UserColumnName="mplus_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="mminus_eggs" msprop:Generator_ColumnVarNameInTable="columnmminus_eggs" msprop:Generator_ColumnPropNameInRow="mminus_eggs" msprop:Generator_ColumnPropNameInTable="mminus_eggsColumn" msprop:Generator_UserColumnName="mminus_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="hcomm_eggs" msprop:Generator_ColumnVarNameInTable="columnhcomm_eggs" msprop:Generator_ColumnPropNameInRow="hcomm_eggs" msprop:Generator_ColumnPropNameInTable="hcomm_eggsColumn" msprop:Generator_UserColumnName="hcomm_eggs" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

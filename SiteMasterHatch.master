@@ -1,0 +1,130 @@
+﻿<%@ Master Language="VB" CodeFile="SiteMasterHatch.master.vb" Inherits="SiteMasterHatch" %>
+<%@ Register TagPrefix="app" Namespace="PoultryApp.Controls" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hatchery | Phoenix Poultry</title>
+    <link rel="icon" href="~/loginforms/images/icons/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="~/Content/app.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="app">
+    <script src="<%= ResolveUrl("~/Scripts/app.js") %>"></script>
+    <div id="appProgress" class="app-progress"></div>
+
+    <header class="app-header">
+        <div class="app-brandbar">
+            <a class="app-brand" href="~/Default_hatch.aspx" runat="server" title="Home">
+                <img src="~/images/phoenix_logo.jpg" alt="Phoenix" runat="server" />
+                <span class="app-module">Hatchery Management</span>
+            </a>
+            <div class="app-user">
+                <span class="app-avatar" aria-hidden="true"><%: UserInitial %></span>
+                <span class="app-user-text">
+                    <strong><%: CurrentUserName %></strong>
+                    <small><%: CurrentLocation %></small>
+                </span>
+                <a class="app-signout" href="~/Logout.aspx" runat="server">Sign out</a>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark app-nav" aria-label="Main menu">
+            <div class="container-fluid px-0">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#appMenu" aria-controls="appMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="appMenu">
+                <ul class="navbar-nav me-auto">
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Transaction</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/hatchery/hatch_eggopening.aspx" runat="server">Opening HE</a></li>
+                            <li><a class="dropdown-item" href="~/hatchery/hatcheryegg_collection.aspx" runat="server">Egg Collection</a></li>
+                            <li><a class="dropdown-item" href="~/hatchery/hatch_cat_entry.aspx" runat="server">Egg Grading</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="~/hatchery/hatchery_pit_egg_tfr.aspx" runat="server">Egg Transfer To Pit</a></li>
+                            <li><a class="dropdown-item" href="~/hatchery/hatchery_egg_sent.aspx" runat="server">Transfer To Satellite</a></li>
+                            <li><a class="dropdown-item" href="~/hatchery/hatcheryegg_sale.aspx" runat="server">Egg Sale</a></li>
+                            <li><a class="dropdown-item" href="~/hatchery/heggsalw2per.aspx" runat="server">Egg Sale (Excl. 2%)</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Hatchery Entry</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/hatchery/hatcandling_entry.aspx" runat="server">Setter Entry</a></li>
+                            <li><a class="dropdown-item" href="~/hatchery/hatcanding2_entry.aspx" runat="server">Transfer Entry</a></li>
+                            <li><a class="dropdown-item" href="~/hatchery/chicksproduce.aspx" runat="server">Chicks Production</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Satellite Hatchery</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/hatchery/satellite_hatchery_candling.aspx" runat="server">Setter Entry</a></li>
+                            <li><a class="dropdown-item" href="~/hatchery/satellite_hatchery_candling2.aspx" runat="server">Transfer Entry</a></li>
+                            <li><a class="dropdown-item" href="~/hatchery/satellite_chicksproduce.aspx" runat="server">Chicks Production</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Staff Attendance</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/hatchery/hatchery_daily_attendance.aspx" runat="server">Daily Attendance</a></li>
+                            <li><a class="dropdown-item" href="~/hatchery/hatchery_daily_att_report.aspx" runat="server">Attendance Report</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Reports</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/reports/harch_hhereport.aspx" runat="server">Daily HHE Report</a></li>
+                            <li><a class="dropdown-item" href="~/reports/setter_report.aspx" runat="server">Loading Report</a></li>
+                            <li><a class="dropdown-item" href="~/reports/hatch_production_report.aspx" runat="server">Production Report</a></li>
+                            <li><a class="dropdown-item" href="~/reports/Hatchery_hatchablity_report.aspx" runat="server">Hatchability Report</a></li>
+                            <li><a class="dropdown-item" href="~/reports/hatch_egg_stock.aspx" runat="server">Egg Stock Report</a></li>
+                            <li><a class="dropdown-item" href="~/reports/hatchery_comparaionreport.aspx" runat="server">Comparison Report</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="~/reports/Satellite_hatchert_hatachibilty_report.aspx" runat="server">Satellite Hatchability</a></li>
+                            <li><a class="dropdown-item" href="~/hatchery/hegg_sale_report.aspx" runat="server">Egg Sale Report</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <form id="form1" runat="server">
+        <%-- AJAX: partial rendering is switched off automatically on report-viewer / upload pages (see App_code/AppAjax.vb) --%>
+        <app:AppScriptManager ID="AppScriptManager" runat="server" EnablePartialRendering="true" AsyncPostBackTimeout="3600" />
+
+        <div id="appBusy" class="app-busy" aria-hidden="true">
+            <div class="app-busy-box"><span class="app-spinner"></span>Please wait&hellip;</div>
+        </div>
+
+        <main class="app-main">
+            <div class="container-xl">
+                <asp:UpdatePanel ID="AppUpdatePanel" runat="server" UpdateMode="Always" ChildrenAsTriggers="true">
+                    <ContentTemplate>
+                        <div class="app-content">
+                            <asp:ContentPlaceHolder ID="SiteMasterHatch" runat="server">
+                                <asp:Label ID="lblString" runat="server" />
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        </main>
+    </form>
+
+    <footer class="app-footer">&copy; <%: DateTime.Now.Year %> Phoenix Group &middot; Poultry Management System</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

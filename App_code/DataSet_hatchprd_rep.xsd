@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet_hatchprd_rep" targetNamespace="http://tempuri.org/DataSet_hatchprd_rep.xsd" xmlns:mstns="http://tempuri.org/DataSet_hatchprd_rep.xsd" xmlns="http://tempuri.org/DataSet_hatchprd_rep.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="PoultryConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PoultryConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.PoultryConnectionString1.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="hatchrry_prod_repoTableAdapter" GeneratorDataComponentClassName="hatchrry_prod_repoTableAdapter" Name="hatchrry_prod_repo" UserDataComponentName="hatchrry_prod_repoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PoultryConnectionString1 (Web.config)" DbObjectName="Poultry.dbo.hatchrry_prod_repo" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT egg_coll_date, entry_date, flock_no, Age, total_eggs, hatch_eggs, comm_eggs, crack_eggs, leakge_eggs, fresh_eggs, bigsize_eggs, md_eggs, mplus_eggs, mminus_eggs, hcomm_eggs, hat_crack_eggs, hat_leak_eggs FROM dbo.hatchrry_prod_repo</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="egg_coll_date" DataSetColumn="egg_coll_date" />
+              <Mapping SourceColumn="entry_date" DataSetColumn="entry_date" />
+              <Mapping SourceColumn="flock_no" DataSetColumn="flock_no" />
+              <Mapping SourceColumn="Age" DataSetColumn="Age" />
+              <Mapping SourceColumn="total_eggs" DataSetColumn="total_eggs" />
+              <Mapping SourceColumn="hatch_eggs" DataSetColumn="hatch_eggs" />
+              <Mapping SourceColumn="comm_eggs" DataSetColumn="comm_eggs" />
+              <Mapping SourceColumn="crack_eggs" DataSetColumn="crack_eggs" />
+              <Mapping SourceColumn="leakge_eggs" DataSetColumn="leakge_eggs" />
+              <Mapping SourceColumn="fresh_eggs" DataSetColumn="fresh_eggs" />
+              <Mapping SourceColumn="bigsize_eggs" DataSetColumn="bigsize_eggs" />
+              <Mapping SourceColumn="md_eggs" DataSetColumn="md_eggs" />
+              <Mapping SourceColumn="mplus_eggs" DataSetColumn="mplus_eggs" />
+              <Mapping SourceColumn="mminus_eggs" DataSetColumn="mminus_eggs" />
+              <Mapping SourceColumn="hcomm_eggs" DataSetColumn="hcomm_eggs" />
+              <Mapping SourceColumn="hat_crack_eggs" DataSetColumn="hat_crack_eggs" />
+              <Mapping SourceColumn="hat_leak_eggs" DataSetColumn="hat_leak_eggs" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet_hatchprd_rep" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DataSet_hatchprd_rep" msprop:Generator_UserDSName="DataSet_hatchprd_rep">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="hatchrry_prod_repo" msprop:Generator_TableClassName="hatchrry_prod_repoDataTable" msprop:Generator_TableVarName="tablehatchrry_prod_repo" msprop:Generator_RowChangedName="hatchrry_prod_repoRowChanged" msprop:Generator_TablePropName="hatchrry_prod_repo" msprop:Generator_RowDeletingName="hatchrry_prod_repoRowDeleting" msprop:Generator_RowChangingName="hatchrry_prod_repoRowChanging" msprop:Generator_RowEvHandlerName="hatchrry_prod_repoRowChangeEventHandler" msprop:Generator_RowDeletedName="hatchrry_prod_repoRowDeleted" msprop:Generator_RowClassName="hatchrry_prod_repoRow" msprop:Generator_UserTableName="hatchrry_prod_repo" msprop:Generator_RowEvArgName="hatchrry_prod_repoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="egg_coll_date" msprop:Generator_ColumnVarNameInTable="columnegg_coll_date" msprop:Generator_ColumnPropNameInRow="egg_coll_date" msprop:Generator_ColumnPropNameInTable="egg_coll_dateColumn" msprop:Generator_UserColumnName="egg_coll_date" type="xs:dateTime" />
+              <xs:element name="entry_date" msprop:Generator_ColumnVarNameInTable="columnentry_date" msprop:Generator_ColumnPropNameInRow="entry_date" msprop:Generator_ColumnPropNameInTable="entry_dateColumn" msprop:Generator_UserColumnName="entry_date" type="xs:dateTime" />
+              <xs:element name="flock_no" msprop:Generator_ColumnVarNameInTable="columnflock_no" msprop:Generator_ColumnPropNameInRow="flock_no" msprop:Generator_ColumnPropNameInTable="flock_noColumn" msprop:Generator_UserColumnName="flock_no">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Age" msprop:Generator_ColumnVarNameInTable="columnAge" msprop:Generator_ColumnPropNameInRow="Age" msprop:Generator_ColumnPropNameInTable="AgeColumn" msprop:Generator_UserColumnName="Age" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="total_eggs" msprop:Generator_ColumnVarNameInTable="columntotal_eggs" msprop:Generator_ColumnPropNameInRow="total_eggs" msprop:Generator_ColumnPropNameInTable="total_eggsColumn" msprop:Generator_UserColumnName="total_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="hatch_eggs" msprop:Generator_ColumnVarNameInTable="columnhatch_eggs" msprop:Generator_ColumnPropNameInRow="hatch_eggs" msprop:Generator_ColumnPropNameInTable="hatch_eggsColumn" msprop:Generator_UserColumnName="hatch_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="comm_eggs" msprop:Generator_ColumnVarNameInTable="columncomm_eggs" msprop:Generator_ColumnPropNameInRow="comm_eggs" msprop:Generator_ColumnPropNameInTable="comm_eggsColumn" msprop:Generator_UserColumnName="comm_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="crack_eggs" msprop:Generator_ColumnVarNameInTable="columncrack_eggs" msprop:Generator_ColumnPropNameInRow="crack_eggs" msprop:Generator_ColumnPropNameInTable="crack_eggsColumn" msprop:Generator_UserColumnName="crack_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="leakge_eggs" msprop:Generator_ColumnVarNameInTable="columnleakge_eggs" msprop:Generator_ColumnPropNameInRow="leakge_eggs" msprop:Generator_ColumnPropNameInTable="leakge_eggsColumn" msprop:Generator_UserColumnName="leakge_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fresh_eggs" msprop:Generator_ColumnVarNameInTable="columnfresh_eggs" msprop:Generator_ColumnPropNameInRow="fresh_eggs" msprop:Generator_ColumnPropNameInTable="fresh_eggsColumn" msprop:Generator_UserColumnName="fresh_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="bigsize_eggs" msprop:Generator_ColumnVarNameInTable="columnbigsize_eggs" msprop:Generator_ColumnPropNameInRow="bigsize_eggs" msprop:Generator_ColumnPropNameInTable="bigsize_eggsColumn" msprop:Generator_UserColumnName="bigsize_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="md_eggs" msprop:Generator_ColumnVarNameInTable="columnmd_eggs" msprop:Generator_ColumnPropNameInRow="md_eggs" msprop:Generator_ColumnPropNameInTable="md_eggsColumn" msprop:Generator_UserColumnName="md_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="mplus_eggs" msprop:Generator_ColumnVarNameInTable="columnmplus_eggs" msprop:Generator_ColumnPropNameInRow="mplus_eggs" msprop:Generator_ColumnPropNameInTable="mplus_eggsColumn" msprop:Generator_UserColumnName="mplus_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="mminus_eggs" msprop:Generator_ColumnVarNameInTable="columnmminus_eggs" msprop:Generator_ColumnPropNameInRow="mminus_eggs" msprop:Generator_ColumnPropNameInTable="mminus_eggsColumn" msprop:Generator_UserColumnName="mminus_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="hcomm_eggs" msprop:Generator_ColumnVarNameInTable="columnhcomm_eggs" msprop:Generator_ColumnPropNameInRow="hcomm_eggs" msprop:Generator_ColumnPropNameInTable="hcomm_eggsColumn" msprop:Generator_UserColumnName="hcomm_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="hat_crack_eggs" msprop:Generator_ColumnVarNameInTable="columnhat_crack_eggs" msprop:Generator_ColumnPropNameInRow="hat_crack_eggs" msprop:Generator_ColumnPropNameInTable="hat_crack_eggsColumn" msprop:Generator_UserColumnName="hat_crack_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="hat_leak_eggs" msprop:Generator_ColumnVarNameInTable="columnhat_leak_eggs" msprop:Generator_ColumnPropNameInRow="hat_leak_eggs" msprop:Generator_ColumnPropNameInTable="hat_leak_eggsColumn" msprop:Generator_UserColumnName="hat_leak_eggs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="hcomm_eggs_rej" msprop:Generator_ColumnVarNameInTable="columnhcomm_eggs_rej" msprop:Generator_ColumnPropNameInRow="hcomm_eggs_rej" msprop:Generator_ColumnPropNameInTable="hcomm_eggs_rejColumn" msprop:Generator_UserColumnName="hcomm_eggs_rej" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

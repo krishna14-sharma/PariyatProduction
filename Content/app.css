@@ -1,0 +1,220 @@
+/* ==========================================================================
+   Phoenix Poultry - shared application theme (used by every master page)
+   Built on Bootstrap 5. Colours are defined once here.
+   ========================================================================== */
+
+:root {
+    --app-ink: #1c2733;            /* main text */
+    --app-muted: #5b6878;          /* secondary text */
+    --app-line: #dfe4ea;           /* borders */
+    --app-bg: #f3f5f8;             /* page background */
+    --app-surface: #ffffff;        /* cards */
+    --app-nav: #17324d;            /* navigation bar */
+    --app-nav-ink: #d9e4ef;
+    --app-accent: #2a6f9e;         /* from the Phoenix logo swirl */
+    --app-accent-dark: #1f5679;
+    --app-accent-soft: #e7f0f7;
+    --app-success: #1e7f4f;
+    --app-danger: #b3261e;
+    --app-radius: 10px;
+    --app-shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 1px 3px rgba(16, 24, 40, .08);
+}
+
+html, body { background: var(--app-bg); }
+body.app {
+    color: var(--app-ink);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+body.app > form { flex: 1 0 auto; }
+
+/* ---------------------------------------------------------------- header */
+.app-header { position: sticky; top: 0; z-index: 1030; box-shadow: 0 1px 0 var(--app-line); }
+
+.app-brandbar {
+    background: var(--app-surface);
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 10px 24px;
+}
+.app-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--app-ink); min-width: 0; }
+.app-brand img { height: 26px; width: auto; display: block; }
+.app-module {
+    border-left: 1px solid var(--app-line); padding-left: 14px;
+    font-weight: 600; font-size: .95rem; color: var(--app-muted); white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+}
+
+.app-user { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.app-avatar {
+    width: 34px; height: 34px; border-radius: 50%; flex: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--app-accent-soft); color: var(--app-accent-dark); font-weight: 700;
+}
+.app-user-text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.app-user-text strong { font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.app-user-text small { color: var(--app-muted); font-size: .78rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.app-signout {
+    margin-left: 6px; font-size: .85rem; font-weight: 600; text-decoration: none;
+    color: var(--app-accent-dark); border: 1px solid var(--app-line); border-radius: 8px; padding: 6px 12px;
+}
+.app-signout:hover { background: var(--app-accent-soft); color: var(--app-accent-dark); }
+
+.app-nav { background: var(--app-nav); padding: 0 16px; }
+.app-nav .navbar-nav .nav-link {
+    color: var(--app-nav-ink); font-weight: 500; font-size: .92rem;
+    padding: 12px 14px; border-bottom: 3px solid transparent;
+}
+.app-nav .navbar-nav .nav-link:hover,
+.app-nav .navbar-nav .nav-link:focus { color: #fff; }
+.app-nav .navbar-nav .nav-link.active,
+.app-nav .navbar-nav .show > .nav-link { color: #fff; border-bottom-color: #7fb8de; }
+.app-nav .navbar-toggler { border-color: rgba(255,255,255,.3); margin: 8px 0; padding: 4px 8px; }
+.app-nav .navbar-toggler:focus { box-shadow: 0 0 0 2px rgba(127, 184, 222, .6); }
+
+.app-nav .dropdown-menu {
+    border: 1px solid var(--app-line); border-radius: var(--app-radius);
+    box-shadow: 0 12px 28px rgba(16, 24, 40, .14); padding: 6px; margin-top: 0; min-width: 250px;
+    max-height: 75vh; overflow-y: auto;
+}
+.app-nav .dropdown-item { border-radius: 6px; padding: 8px 12px; font-size: .9rem; color: var(--app-ink); }
+.app-nav .dropdown-item:hover, .app-nav .dropdown-item:focus { background: var(--app-accent-soft); color: var(--app-accent-dark); }
+.app-nav .dropdown-item.active { background: var(--app-accent); color: #fff; }
+.app-nav .dropdown-divider { margin: 6px 4px; border-top-color: var(--app-line); }
+
+/* ---------------------------------------------------------------- content */
+.app-main { padding: 24px 0 40px; }
+.app-content {
+    background: var(--app-surface); border: 1px solid var(--app-line); border-radius: var(--app-radius);
+    box-shadow: var(--app-shadow); padding: 24px 28px;
+}
+/* pages wrap their markup in another .container - avoid double gutters */
+.app-content .container { max-width: none; padding-left: 0; padding-right: 0; }
+
+.app-content h1, .app-content h2, .app-content h3, .app-content h4 { color: var(--app-ink); font-weight: 600; }
+.app-content h3 {
+    font-size: 1.2rem; letter-spacing: .01em; text-transform: none;
+    padding-bottom: 12px; margin-bottom: 18px; border-bottom: 1px solid var(--app-line);
+}
+.app-content label:not(.app-report *), .app-content .form-label { font-weight: 500; font-size: .88rem; color: var(--app-muted); margin-bottom: 4px; }
+.app-content .form-group { margin-bottom: 14px; }
+.app-content hr.divider { border-top-color: var(--app-line); opacity: 1; }
+
+/* form controls - Bootstrap classes, plus unclassed inputs (outside the report viewer) */
+.app-content .form-control, .app-content .form-select { border-color: #cdd5de; border-radius: 8px; font-size: .93rem; }
+.app-content .form-control:focus, .app-content .form-select:focus { border-color: var(--app-accent); box-shadow: 0 0 0 3px rgba(42, 111, 158, .18); }
+.app-content :where(input[type="text"], input[type="date"], input[type="number"], input[type="password"], select, textarea):not([class]):not(.app-report *) {
+    border: 1px solid #cdd5de; border-radius: 8px; padding: 6px 10px; font-size: .93rem; background: #fff; max-width: 100%;
+}
+
+/* buttons - asp:Button without a CssClass gets the primary look */
+.app-content .btn-primary { background: var(--app-accent); border-color: var(--app-accent); }
+.app-content .btn-primary:hover { background: var(--app-accent-dark); border-color: var(--app-accent-dark); }
+.app-content :where(input[type="submit"], input[type="button"], button[type="submit"]):not([class]):not(.app-report *) {
+    background: var(--app-accent); color: #fff; border: 1px solid var(--app-accent);
+    border-radius: 8px; padding: 7px 16px; font-weight: 600; font-size: .9rem; cursor: pointer;
+}
+.app-content :where(input[type="submit"], input[type="button"], button[type="submit"]):not([class]):not(.app-report *):hover { background: var(--app-accent-dark); }
+.app-content :where(input[type="submit"], input[type="button"]):disabled { opacity: .6; cursor: not-allowed; }
+
+/* grids */
+.app-content .table { font-size: .9rem; border-color: var(--app-line); }
+.app-content .table > :not(caption) > * > * { padding: .55rem .65rem; }
+.app-content .table tr:first-child th,
+.app-content .table thead td, .app-content .table thead th {
+    background: #f6f8fa; color: var(--app-muted); font-weight: 600; text-transform: uppercase; font-size: .76rem; letter-spacing: .03em;
+}
+.app-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* Section boxes many pages define themselves (#prdform...) - restyled as subtle panels */
+.app-content #prdform, .app-content #prdform_grd, .app-content #divshed_grid,
+.app-content #prdform1, .app-content #prdform2, .app-content #prdform3 {
+    border: 1px solid var(--app-line); border-radius: var(--app-radius); padding: 16px 18px; margin: 14px 0; background: #fff;
+}
+.app-content :is(#prdform, #prdform_grd, #divshed_grid, #prdform1, #prdform2, #prdform3):not(:has(table, input, select, textarea, img, span)) {
+    border: 0; padding: 0; margin: 0;
+}
+.app-content #prdform_grd, .app-content #divshed_grid { overflow-x: auto; }
+
+/* asp:Label styled as a read-only field keeps its height when empty */
+.app-content span.form-control { display: block; min-height: calc(1.5em + .75rem + 2px); background: #f6f8fa; }
+
+/* Crystal Reports viewer area */
+/* No overflow/flex here: the Crystal viewer sizes itself with absolutely positioned parts and must not be clipped. */
+.app-report { display: block; position: static; margin-top: 16px; border-top: 1px solid var(--app-line); padding-top: 16px; min-height: 1px; }
+
+/* ---------------------------------------------------------------- home pages */
+.app-hero {
+    display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; align-items: center;
+}
+.app-hero h1 { font-size: 1.7rem; margin: 6px 0 8px; }
+.app-hero .app-eyebrow { color: var(--app-accent-dark); font-weight: 600; font-size: .82rem; text-transform: uppercase; letter-spacing: .06em; }
+.app-hero p { color: var(--app-muted); margin-bottom: 0; }
+.app-hero img { width: 100%; height: auto; max-height: 260px; object-fit: cover; border-radius: var(--app-radius); }
+.app-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; margin-top: 26px; }
+.app-tile {
+    display: block; text-decoration: none; color: var(--app-ink);
+    border: 1px solid var(--app-line); border-radius: var(--app-radius); padding: 14px 16px; background: #fff;
+    transition: border-color .15s, box-shadow .15s;
+}
+.app-tile:hover { border-color: var(--app-accent); box-shadow: 0 4px 14px rgba(42, 111, 158, .12); color: var(--app-ink); }
+.app-tile strong { display: block; font-size: .95rem; }
+.app-tile span { display: block; color: var(--app-muted); font-size: .82rem; margin-top: 2px; }
+.app-section-title { font-size: .8rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--app-muted); margin: 28px 0 0; }
+
+/* ---------------------------------------------------------------- footer */
+.app-footer { color: var(--app-muted); font-size: .8rem; text-align: center; padding: 14px 16px 22px; }
+
+/* ---------------------------------------------------------------- busy indicator + toasts */
+.app-progress {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 2000; background: #7fb8de;
+    transition: opacity .2s; opacity: 0; pointer-events: none;
+}
+.app-progress.is-active { width: 85%; opacity: 1; transition: width 8s cubic-bezier(.1, .7, .2, 1), opacity .2s; }
+.app-busy {
+    position: fixed; inset: 0; z-index: 1990; display: none; align-items: center; justify-content: center;
+    background: rgba(243, 245, 248, .55); cursor: progress;
+}
+.app-busy.is-active { display: flex; }
+.app-busy-box {
+    display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--app-line);
+    border-radius: var(--app-radius); padding: 12px 18px; box-shadow: 0 10px 30px rgba(16,24,40,.15); font-weight: 600; font-size: .9rem;
+}
+.app-spinner {
+    width: 20px; height: 20px; border-radius: 50%; border: 3px solid var(--app-accent-soft); border-top-color: var(--app-accent);
+    animation: app-spin .8s linear infinite;
+}
+@keyframes app-spin { to { transform: rotate(360deg); } }
+
+.app-toasts { position: fixed; right: 18px; bottom: 18px; z-index: 2010; display: flex; flex-direction: column; gap: 10px; max-width: min(420px, calc(100vw - 36px)); }
+.app-toast {
+    display: flex; gap: 12px; align-items: flex-start; background: #fff; border: 1px solid var(--app-line);
+    border-left: 4px solid var(--app-accent); border-radius: 8px; padding: 12px 14px; box-shadow: 0 10px 30px rgba(16,24,40,.16);
+    font-size: .9rem; animation: app-in .18s ease-out; word-break: break-word;
+}
+.app-toast.is-success { border-left-color: var(--app-success); }
+.app-toast.is-error { border-left-color: var(--app-danger); }
+.app-toast-text { flex: 1; white-space: pre-line; }
+.app-toast button { border: 0; background: none; color: var(--app-muted); font-size: 1.1rem; line-height: 1; padding: 0 2px; cursor: pointer; }
+@keyframes app-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ---------------------------------------------------------------- small screens */
+@media (max-width: 991.98px) {
+    .app-nav .navbar-nav .nav-link { border-bottom: 0; padding: 10px 6px; }
+    .app-nav .dropdown-menu { box-shadow: none; max-height: none; }
+}
+@media (max-width: 767.98px) {
+    .app-brandbar { padding: 10px 16px; }
+    .app-module, .app-user-text { display: none; }
+    .app-main { padding: 16px 0 28px; }
+    .app-content { padding: 18px 16px; border-radius: 0; border-left: 0; border-right: 0; }
+    .app-hero { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------------- print */
+@media print {
+    .app-header, .app-footer, .app-toasts, .app-busy, .app-progress { display: none !important; }
+    body.app, .app-content { background: #fff; border: 0; box-shadow: none; padding: 0; }
+}

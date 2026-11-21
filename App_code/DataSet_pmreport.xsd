@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet_pmreport" targetNamespace="http://tempuri.org/DataSet_pmreport.xsd" xmlns:mstns="http://tempuri.org/DataSet_pmreport.xsd" xmlns="http://tempuri.org/DataSet_pmreport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="PoultryConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PoultryConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.PoultryConnectionString1.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="pmreportTableAdapter" GeneratorDataComponentClassName="pmreportTableAdapter" Name="pmreport" UserDataComponentName="pmreportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PoultryConnectionString1 (Web.config)" DbObjectName="Poultry.dbo.pmreport" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT f, m, disease_name FROM dbo.pmreport</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="f" DataSetColumn="f" />
+              <Mapping SourceColumn="m" DataSetColumn="m" />
+              <Mapping SourceColumn="disease_name" DataSetColumn="disease_name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet_pmreport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSet_pmreport" msprop:Generator_DataSetName="DataSet_pmreport">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="pmreport" msprop:Generator_TableClassName="pmreportDataTable" msprop:Generator_TableVarName="tablepmreport" msprop:Generator_TablePropName="pmreport" msprop:Generator_RowDeletingName="pmreportRowDeleting" msprop:Generator_RowChangingName="pmreportRowChanging" msprop:Generator_RowEvHandlerName="pmreportRowChangeEventHandler" msprop:Generator_RowDeletedName="pmreportRowDeleted" msprop:Generator_UserTableName="pmreport" msprop:Generator_RowChangedName="pmreportRowChanged" msprop:Generator_RowEvArgName="pmreportRowChangeEvent" msprop:Generator_RowClassName="pmreportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="f" msprop:Generator_ColumnVarNameInTable="columnf" msprop:Generator_ColumnPropNameInRow="f" msprop:Generator_ColumnPropNameInTable="fColumn" msprop:Generator_UserColumnName="f" type="xs:int" minOccurs="0" />
+              <xs:element name="m" msprop:Generator_ColumnVarNameInTable="columnm" msprop:Generator_ColumnPropNameInRow="m" msprop:Generator_ColumnPropNameInTable="mColumn" msprop:Generator_UserColumnName="m" type="xs:int" minOccurs="0" />
+              <xs:element name="disease_name" msprop:Generator_ColumnVarNameInTable="columndisease_name" msprop:Generator_ColumnPropNameInRow="disease_name" msprop:Generator_ColumnPropNameInTable="disease_nameColumn" msprop:Generator_UserColumnName="disease_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

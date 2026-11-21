@@ -1,0 +1,11 @@
+select sum(hatch_eggs), sum(fresh_eggs) , sum(bigsize_eggs),sum(md_eggs), sum(mplus_eggs),sum(mminus_eggs) from 
+[dbo].[hatch_egg_grading] where egg_coll_date ='8/20/25'
+select sum(hatch_eggs), sum(fresh_eggs) , sum(bigsize_eggs),sum(md_eggs), sum(mplus_eggs),sum(mminus_eggs) 
+from [dbo].[hatch_egg_grading_entry] where egg_coll_date ='8/20/25'
+
+
+
+select * from [hatch_egg_grading] where  egg_coll_date ='8/12/25' and flock_no ='186A1'
+select * from [dbo].[hatch_egg_grading_entry] where egg_coll_date ='8/12/25' and flock_no ='186A1'
+
+update [hatch_egg_grading] set  md_eggs=0 where  egg_coll_date ='8/12/25' and flock_no ='186A1'

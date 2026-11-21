@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet_Egg_performace_Report" targetNamespace="http://tempuri.org/DataSet_Egg_performace_Report.xsd" xmlns:mstns="http://tempuri.org/DataSet_Egg_performace_Report.xsd" xmlns="http://tempuri.org/DataSet_Egg_performace_Report.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="PoultryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PoultryConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.PoultryConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="View_[tmp_weekly_reportTableAdapter" GeneratorDataComponentClassName="View__tmp_weekly_reportTableAdapter" Name="View_[tmp_weekly_report" UserDataComponentName="View_[tmp_weekly_reportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PoultryConnectionString (Web.config)" DbObjectName="Poultry.dbo.[View_[tmp_weekly_report]" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Age, fstock, eggstock, heggstock, mortality, prdper, prdstd, heggprdper, heggprdstd, eggperbird, heggperbird, EggperBirdOrg, HatchingEggperBird FROM dbo.[View_[tmp_weekly_report]</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Age" DataSetColumn="Age" />
+              <Mapping SourceColumn="fstock" DataSetColumn="fstock" />
+              <Mapping SourceColumn="eggstock" DataSetColumn="eggstock" />
+              <Mapping SourceColumn="heggstock" DataSetColumn="heggstock" />
+              <Mapping SourceColumn="mortality" DataSetColumn="mortality" />
+              <Mapping SourceColumn="prdper" DataSetColumn="prdper" />
+              <Mapping SourceColumn="prdstd" DataSetColumn="prdstd" />
+              <Mapping SourceColumn="heggprdper" DataSetColumn="heggprdper" />
+              <Mapping SourceColumn="heggprdstd" DataSetColumn="heggprdstd" />
+              <Mapping SourceColumn="eggperbird" DataSetColumn="eggperbird" />
+              <Mapping SourceColumn="heggperbird" DataSetColumn="heggperbird" />
+              <Mapping SourceColumn="EggperBirdOrg" DataSetColumn="EggperBirdOrg" />
+              <Mapping SourceColumn="HatchingEggperBird" DataSetColumn="HatchingEggperBird" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet_Egg_performace_Report" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSet_Egg_performace_Report" msprop:Generator_DataSetName="DataSet_Egg_performace_Report">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="View__x005B_tmp_weekly_report" msprop:Generator_TableClassName="_View__tmp_weekly_reportDataTable" msprop:Generator_TableVarName="_tableView__tmp_weekly_report" msprop:Generator_TablePropName="_View__tmp_weekly_report" msprop:Generator_RowDeletingName="_View__tmp_weekly_reportRowDeleting" msprop:Generator_RowChangingName="_View__tmp_weekly_reportRowChanging" msprop:Generator_RowEvHandlerName="_View__tmp_weekly_reportRowChangeEventHandler" msprop:Generator_RowDeletedName="_View__tmp_weekly_reportRowDeleted" msprop:Generator_UserTableName="View_[tmp_weekly_report" msprop:Generator_RowChangedName="_View__tmp_weekly_reportRowChanged" msprop:Generator_RowEvArgName="_View__tmp_weekly_reportRowChangeEvent" msprop:Generator_RowClassName="_View__tmp_weekly_reportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Age" msprop:Generator_ColumnVarNameInTable="columnAge" msprop:Generator_ColumnPropNameInRow="Age" msprop:Generator_ColumnPropNameInTable="AgeColumn" msprop:Generator_UserColumnName="Age" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fstock" msprop:Generator_ColumnVarNameInTable="columnfstock" msprop:Generator_ColumnPropNameInRow="fstock" msprop:Generator_ColumnPropNameInTable="fstockColumn" msprop:Generator_UserColumnName="fstock" type="xs:decimal" minOccurs="0" />
+              <xs:element name="eggstock" msprop:Generator_ColumnVarNameInTable="columneggstock" msprop:Generator_ColumnPropNameInRow="eggstock" msprop:Generator_ColumnPropNameInTable="eggstockColumn" msprop:Generator_UserColumnName="eggstock" type="xs:decimal" minOccurs="0" />
+              <xs:element name="heggstock" msprop:Generator_ColumnVarNameInTable="columnheggstock" msprop:Generator_ColumnPropNameInRow="heggstock" msprop:Generator_ColumnPropNameInTable="heggstockColumn" msprop:Generator_UserColumnName="heggstock" type="xs:decimal" minOccurs="0" />
+              <xs:element name="mortality" msprop:Generator_ColumnVarNameInTable="columnmortality" msprop:Generator_ColumnPropNameInRow="mortality" msprop:Generator_ColumnPropNameInTable="mortalityColumn" msprop:Generator_UserColumnName="mortality" type="xs:decimal" minOccurs="0" />
+              <xs:element name="prdper" msprop:Generator_ColumnVarNameInTable="columnprdper" msprop:Generator_ColumnPropNameInRow="prdper" msprop:Generator_ColumnPropNameInTable="prdperColumn" msprop:Generator_UserColumnName="prdper" type="xs:decimal" minOccurs="0" />
+              <xs:element name="prdstd" msprop:Generator_ColumnVarNameInTable="columnprdstd" msprop:Generator_ColumnPropNameInRow="prdstd" msprop:Generator_ColumnPropNameInTable="prdstdColumn" msprop:Generator_UserColumnName="prdstd" type="xs:decimal" minOccurs="0" />
+              <xs:element name="heggprdper" msprop:Generator_ColumnVarNameInTable="columnheggprdper" msprop:Generator_ColumnPropNameInRow="heggprdper" msprop:Generator_ColumnPropNameInTable="heggprdperColumn" msprop:Generator_UserColumnName="heggprdper" type="xs:decimal" minOccurs="0" />
+              <xs:element name="heggprdstd" msprop:Generator_ColumnVarNameInTable="columnheggprdstd" msprop:Generator_ColumnPropNameInRow="heggprdstd" msprop:Generator_ColumnPropNameInTable="heggprdstdColumn" msprop:Generator_UserColumnName="heggprdstd" type="xs:decimal" minOccurs="0" />
+              <xs:element name="eggperbird" msprop:Generator_ColumnVarNameInTable="columneggperbird" msprop:Generator_ColumnPropNameInRow="eggperbird" msprop:Generator_ColumnPropNameInTable="eggperbirdColumn" msprop:Generator_UserColumnName="eggperbird" type="xs:decimal" minOccurs="0" />
+              <xs:element name="heggperbird" msprop:Generator_ColumnVarNameInTable="columnheggperbird" msprop:Generator_ColumnPropNameInRow="heggperbird" msprop:Generator_ColumnPropNameInTable="heggperbirdColumn" msprop:Generator_UserColumnName="heggperbird" type="xs:decimal" minOccurs="0" />
+              <xs:element name="EggperBirdOrg" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnEggperBirdOrg" msprop:Generator_ColumnPropNameInRow="EggperBirdOrg" msprop:Generator_ColumnPropNameInTable="EggperBirdOrgColumn" msprop:Generator_UserColumnName="EggperBirdOrg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="HatchingEggperBird" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHatchingEggperBird" msprop:Generator_ColumnPropNameInRow="HatchingEggperBird" msprop:Generator_ColumnPropNameInTable="HatchingEggperBirdColumn" msprop:Generator_UserColumnName="HatchingEggperBird" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

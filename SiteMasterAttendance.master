@@ -1,0 +1,99 @@
+﻿<%@ Master Language="VB" CodeFile="SiteMasterAttendance.master.vb" Inherits="SiteMasterAttendance" %>
+<%@ Register TagPrefix="app" Namespace="PoultryApp.Controls" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Attendance | Phoenix Poultry</title>
+    <link rel="icon" href="~/loginforms/images/icons/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="~/Content/app.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="PLaceHolderAttendance" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="app">
+    <script src="<%= ResolveUrl("~/Scripts/app.js") %>"></script>
+    <div id="appProgress" class="app-progress"></div>
+
+    <header class="app-header">
+        <div class="app-brandbar">
+            <a class="app-brand" href="~/Default_Attendance.aspx" runat="server" title="Home">
+                <img src="~/images/phoenix_logo.jpg" alt="Phoenix" runat="server" />
+                <span class="app-module">Attendance Management</span>
+            </a>
+            <div class="app-user">
+                <span class="app-avatar" aria-hidden="true"><%: UserInitial %></span>
+                <span class="app-user-text">
+                    <strong><%: CurrentUserName %></strong>
+                    <small><%: CurrentLocation %></small>
+                </span>
+                <a class="app-signout" href="~/Logout.aspx" runat="server">Sign out</a>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark app-nav" aria-label="Main menu">
+            <div class="container-fluid px-0">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#appMenu" aria-controls="appMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="appMenu">
+                <ul class="navbar-nav me-auto">
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Transactions</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/attendance/Daily_atttendancearea.aspx" runat="server">Daily Attendance</a></li>
+                            <li><a class="dropdown-item" href="~/attendance/w_att_all.aspx" runat="server">Attendance (Weekly)</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="~/attendance/monthltatt.aspx" runat="server">Attendance (Monthly)</a></li>
+                            <li><a class="dropdown-item" href="~/attendance/uploadapplicationimage.aspx" runat="server">Upload Application Image</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Reports</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/attendance/Daily_attandence_report.aspx" runat="server">Daily Attendance Report</a></li>
+                            <li><a class="dropdown-item" href="~/attendance/wstaff_att_repo.aspx" runat="server">Weekly Attendance Report</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="~/attendance/ConsoldatedAttRepo.aspx" runat="server">Consolidated Attendance Report</a></li>
+                            <li><a class="dropdown-item" href="~/attendance/Default.aspx" runat="server">Consolidated Leave Report</a></li>
+                            <li><a class="dropdown-item" href="~/attendance/Monthlyattendancereport.aspx" runat="server">Monthly Leave Report</a></li>
+                            <li><a class="dropdown-item" href="~/attendance/Muster_Report.aspx" runat="server">Muster Roll</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <form id="form1" runat="server">
+        <%-- AJAX: partial rendering is switched off automatically on report-viewer / upload pages (see App_code/AppAjax.vb) --%>
+        <app:AppScriptManager ID="AppScriptManager" runat="server" EnablePartialRendering="true" AsyncPostBackTimeout="3600" />
+
+        <div id="appBusy" class="app-busy" aria-hidden="true">
+            <div class="app-busy-box"><span class="app-spinner"></span>Please wait&hellip;</div>
+        </div>
+
+        <main class="app-main">
+            <div class="container-xl">
+                <asp:UpdatePanel ID="AppUpdatePanel" runat="server" UpdateMode="Always" ChildrenAsTriggers="true">
+                    <ContentTemplate>
+                        <div class="app-content">
+                            <asp:ContentPlaceHolder ID="PlaceHolder_Attendance" runat="server">
+                                <asp:Label ID="lblString" runat="server" />
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        </main>
+    </form>
+
+    <footer class="app-footer">&copy; <%: DateTime.Now.Year %> Phoenix Group &middot; Poultry Management System</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

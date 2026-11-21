@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetMonthlyTempRep" targetNamespace="http://tempuri.org/DataSetMonthlyTempRep.xsd" xmlns:mstns="http://tempuri.org/DataSetMonthlyTempRep.xsd" xmlns="http://tempuri.org/DataSetMonthlyTempRep.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="PoultryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PoultryConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.PoultryConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="v_monthly_tempTableAdapter" GeneratorDataComponentClassName="v_monthly_tempTableAdapter" Name="v_monthly_temp" UserDataComponentName="v_monthly_tempTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PoultryConnectionString (Web.config)" DbObjectName="Poultry.dbo.v_monthly_temp" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT entry_date, minshedin, maxshedin, avgshedin, minshedout, maxshedout, avgshedout FROM dbo.v_monthly_temp</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="entry_date" DataSetColumn="entry_date" />
+              <Mapping SourceColumn="minshedin" DataSetColumn="minshedin" />
+              <Mapping SourceColumn="maxshedin" DataSetColumn="maxshedin" />
+              <Mapping SourceColumn="avgshedin" DataSetColumn="avgshedin" />
+              <Mapping SourceColumn="minshedout" DataSetColumn="minshedout" />
+              <Mapping SourceColumn="maxshedout" DataSetColumn="maxshedout" />
+              <Mapping SourceColumn="avgshedout" DataSetColumn="avgshedout" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetMonthlyTempRep" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSetMonthlyTempRep" msprop:Generator_DataSetName="DataSetMonthlyTempRep">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="v_monthly_temp" msprop:Generator_TableClassName="v_monthly_tempDataTable" msprop:Generator_TableVarName="tablev_monthly_temp" msprop:Generator_TablePropName="v_monthly_temp" msprop:Generator_RowDeletingName="v_monthly_tempRowDeleting" msprop:Generator_RowChangingName="v_monthly_tempRowChanging" msprop:Generator_RowEvHandlerName="v_monthly_tempRowChangeEventHandler" msprop:Generator_RowDeletedName="v_monthly_tempRowDeleted" msprop:Generator_UserTableName="v_monthly_temp" msprop:Generator_RowChangedName="v_monthly_tempRowChanged" msprop:Generator_RowEvArgName="v_monthly_tempRowChangeEvent" msprop:Generator_RowClassName="v_monthly_tempRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="entry_date" msprop:Generator_ColumnVarNameInTable="columnentry_date" msprop:Generator_ColumnPropNameInRow="entry_date" msprop:Generator_ColumnPropNameInTable="entry_dateColumn" msprop:Generator_UserColumnName="entry_date" type="xs:dateTime" />
+              <xs:element name="minshedin" msprop:Generator_ColumnVarNameInTable="columnminshedin" msprop:Generator_ColumnPropNameInRow="minshedin" msprop:Generator_ColumnPropNameInTable="minshedinColumn" msprop:Generator_UserColumnName="minshedin" type="xs:decimal" minOccurs="0" />
+              <xs:element name="maxshedin" msprop:Generator_ColumnVarNameInTable="columnmaxshedin" msprop:Generator_ColumnPropNameInRow="maxshedin" msprop:Generator_ColumnPropNameInTable="maxshedinColumn" msprop:Generator_UserColumnName="maxshedin" type="xs:decimal" minOccurs="0" />
+              <xs:element name="avgshedin" msprop:Generator_ColumnVarNameInTable="columnavgshedin" msprop:Generator_ColumnPropNameInRow="avgshedin" msprop:Generator_ColumnPropNameInTable="avgshedinColumn" msprop:Generator_UserColumnName="avgshedin" type="xs:decimal" minOccurs="0" />
+              <xs:element name="minshedout" msprop:Generator_ColumnVarNameInTable="columnminshedout" msprop:Generator_ColumnPropNameInRow="minshedout" msprop:Generator_ColumnPropNameInTable="minshedoutColumn" msprop:Generator_UserColumnName="minshedout" type="xs:decimal" minOccurs="0" />
+              <xs:element name="maxshedout" msprop:Generator_ColumnVarNameInTable="columnmaxshedout" msprop:Generator_ColumnPropNameInRow="maxshedout" msprop:Generator_ColumnPropNameInTable="maxshedoutColumn" msprop:Generator_UserColumnName="maxshedout" type="xs:decimal" minOccurs="0" />
+              <xs:element name="avgshedout" msprop:Generator_ColumnVarNameInTable="columnavgshedout" msprop:Generator_ColumnPropNameInRow="avgshedout" msprop:Generator_ColumnPropNameInTable="avgshedoutColumn" msprop:Generator_UserColumnName="avgshedout" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
