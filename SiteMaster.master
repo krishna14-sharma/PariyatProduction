@@ -111,6 +111,7 @@
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Reports</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="~/reports/egg_senttopitfromhatchery.aspx" runat="server">Egg Sent to Pit</a></li>
+                            <li><a class="dropdown-item" href="~/reports/FeedPerChick.aspx" runat="server">Feed per Chick</a></li>
                         </ul>
                     </li>
 

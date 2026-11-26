@@ -60,7 +60,8 @@
                             <li><a class="dropdown-item" href="~/misreports/weekly_egg_data.aspx" runat="server">Weekly Egg (Shed Wise)</a></li> 
                             <li><a class="dropdown-item" href="~/misreports/WeeklyEggdata_comm.aspx" runat="server">Weekly Egg (Consolidated)</a></li>      
                             <li><a class="dropdown-item" href="~/misreports/weekly_stock_data.aspx" runat="server">Weekly Bird Stock</a></li> 
-                            <li><a class="dropdown-item" href="~/misreports/weekly_flock_performance_rpt.aspx" runat="server">Flock Performance</a></li>                                           
+                            <li><a class="dropdown-item" href="~/misreports/weekly_flock_performance_rpt.aspx" runat="server">Flock Performance</a></li>
+                            <li><a class="dropdown-item" href="~/misreports/FeedPerChick.aspx" runat="server">Feed per Chick</a></li>                                       
                         </ul>
                     </li>
 
