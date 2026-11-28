@@ -35,6 +35,14 @@
 .fpc-table tfoot td, .fpc-table tr.fpc-total td { font-weight: 700; background: var(--fpc-bg); border-top: 2px solid var(--fpc-line); border-bottom: 0; }
 .fpc-muted { color: var(--fpc-muted); font-size: .8rem; }
 .fpc-empty { padding: 18px; text-align: center; color: var(--fpc-muted); }
+.fpc-h4 { font-size: 1rem; font-weight: 600; margin: 22px 0 6px; }
+.fpc-week { border: 1px solid var(--fpc-line); border-radius: 10px; background: #fff; margin-bottom: 10px; }
+.fpc-week > summary { cursor: pointer; padding: 10px 14px; font-size: .95rem; list-style-position: inside; }
+.fpc-week > summary .fpc-muted { margin-left: 6px; font-size: .85rem; }
+.fpc-week[open] > summary { border-bottom: 1px solid var(--fpc-line); }
+.fpc-week .fpc-table-wrap { border: 0; border-radius: 0 0 10px 10px; max-height: 60vh; overflow: auto; }
+.fpc-week .fpc-table th { position: sticky; top: 0; }
+.fpc-week .fpc-table td.fpc-left { white-space: nowrap; min-width: 0; }
 .fpc-notes { margin-top: 14px; font-size: .84rem; color: var(--fpc-muted); }
 .fpc-notes ul { margin: 4px 0 0; padding-left: 18px; }
 .fpc-msg { border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; font-size: .9rem; }
@@ -46,6 +54,7 @@
 }
 @media print {
     .fpc-filters, .fpc-actions { display: none !important; }
+    .fpc-week .fpc-table-wrap { max-height: none; overflow: visible; }
     .fpc-table-wrap { overflow: visible; border: 0; }
     .fpc-table { font-size: 9pt; }
 }

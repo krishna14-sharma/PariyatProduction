@@ -67,7 +67,8 @@ Partial Class reports_FeedPerChick
         Response.ContentEncoding = Encoding.UTF8
         Response.AddHeader("Content-Disposition", "attachment; filename=FeedPerChick_" & toDate.ToString("yyyyMMdd", CultureInfo.InvariantCulture) & ".xls")
         Response.BinaryWrite(Encoding.UTF8.GetPreamble())
-        Response.Write(BuildExcel(dt, fromDate, toDate))
+        Dim weekly As DataTable = FeedPerChickData.LoadWeekly(fromDate, toDate, ddlFarm.SelectedValue, ddlFlock.SelectedValue, WholeLife, chkMale.Checked)
+        Response.Write(BuildExcel(dt, fromDate, toDate).Replace("</body></html>", WeeklyExcel(weekly) & "</body></html>"))
         Response.End()
     End Sub
 
@@ -145,6 +146,9 @@ Partial Class reports_FeedPerChick
         gvFlocks.DataSource = dt
         gvFlocks.DataBind()
         litEmpty.Text = If(dt.Rows.Count = 0, "<div class=""fpc-empty"">No flock has feed entries between these dates.</div>", "")
+
+        Dim weekly As DataTable = FeedPerChickData.LoadWeekly(fromDate, toDate, ddlFarm.SelectedValue, ddlFlock.SelectedValue, WholeLife, chkMale.Checked)
+        litWeekly.Text = WeeklyHtml(dt, weekly)
     End Sub
 
     Protected Sub gvFlocks_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles gvFlocks.RowDataBound
@@ -164,6 +168,84 @@ Partial Class reports_FeedPerChick
         c(13).Text = N(_totals("FeedPerSaleableChickKg"), 3)
         c(14).Text = N(_totals("ChicksPerTonne"), 0)
     End Sub
+
+    ' ------------------------------------------------------------------ week by week
+
+    ' main figures first, details after
+    Private Shared ReadOnly WeekCols As String() = {"FeedKg", "Chicks", "FeedPerChickKg", "CumFeedPerChickKg", "FeedPerHatchingEggG",
+                                                     "FemaleFeedKg", "MaleFeedKg", "Eggs", "HatchingEggs", "SaleableChicks", "CumFeedKg", "CumChicks"}
+    Private Shared ReadOnly WeekHeads As String() = {"Total feed (kg)", "Chicks", "Feed / chick (kg)", "Cum. feed / chick (kg)", "Feed / HE (g)",
+                                                      "Female feed (kg)", "Male feed (kg)", "Eggs", "Hatching eggs", "Saleable chicks", "Cum. feed (kg)", "Cum. chicks"}
+
+    Private Shared Function WeekDecimals(ByVal col As String) As Integer
+        If col.EndsWith("ChickKg") Then Return 3
+        If col.EndsWith("G") Then Return 1
+        Return 0
+    End Function
+
+    ''' <summary>One collapsible table per flock (the first one open), weeks in order.</summary>
+    Private Function WeeklyHtml(ByVal flocks As DataTable, ByVal weekly As DataTable) As String
+        If weekly.Rows.Count = 0 Then Return "<div class=""fpc-empty"">No weekly figures.</div>"
+        Dim sb As New StringBuilder()
+        Dim first As Boolean = True
+        For Each f As DataRow In flocks.Rows
+            Dim flock As String = Convert.ToString(f("Flock"))
+            Dim rows As DataRow() = weekly.Select("Flock = '" & flock.Replace("'", "''") & "'", "AgeWeek")
+            If rows.Length = 0 Then Continue For
+            Dim last As DataRow = rows(rows.Length - 1)
+            sb.Append("<details class=""fpc-week""").Append(If(first, " open", "")).Append("><summary><strong>Flock ").Append(HttpUtility.HtmlEncode(flock)).Append("</strong>")
+            sb.Append(" <span class=""fpc-muted"">").Append(HttpUtility.HtmlEncode(Convert.ToString(f("Breed")))).Append(" · weeks ").Append(rows(0)("AgeWeek")).Append("–").Append(last("AgeWeek"))
+            sb.Append(" · cum. feed / chick ").Append(N(last("CumFeedPerChickKg"), 3)).Append(" kg</span></summary>")
+            sb.Append("<div class=""fpc-table-wrap""><table class=""fpc-table""><thead><tr><th class=""fpc-left"">Age week</th><th class=""fpc-left"">Dates</th>")
+            For i As Integer = 0 To WeekCols.Length - 1
+                If WeekCols(i) = "MaleFeedKg" AndAlso Not chkMale.Checked Then Continue For
+                sb.Append("<th").Append(If(WeekCols(i) = "CumFeedPerChickKg", " class=""fpc-key""", "")).Append(">").Append(HttpUtility.HtmlEncode(WeekHeads(i))).Append("</th>")
+            Next
+            sb.Append("</tr></thead><tbody>")
+            For Each r As DataRow In rows
+                sb.Append("<tr><td class=""fpc-left""><strong>").Append(r("AgeWeek")).Append("</strong></td><td class=""fpc-left fpc-muted"">")
+                sb.Append(ShortDate(r("WeekFrom"))).Append(" – ").Append(ShortDate(r("WeekTo"))).Append("</td>")
+                For Each c As String In WeekCols
+                    If c = "MaleFeedKg" AndAlso Not chkMale.Checked Then Continue For
+                    sb.Append("<td").Append(If(c = "CumFeedPerChickKg", " class=""fpc-key""", "")).Append(">").Append(N(r(c), WeekDecimals(c))).Append("</td>")
+                Next
+                sb.Append("</tr>")
+            Next
+            sb.Append("</tbody></table></div></details>")
+            first = False
+        Next
+        Return sb.ToString()
+    End Function
+
+    Private Function WeeklyExcel(ByVal weekly As DataTable) As String
+        Dim sb As New StringBuilder()
+        sb.Append("<br/><table border=""1""><tr><th colspan=""").Append(WeekCols.Length + 4).Append(""">Week by week</th></tr><tr><th>Flock</th><th>Age week</th><th>From</th><th>To</th>")
+        For Each h As String In WeekHeads
+            sb.Append("<th>").Append(HttpUtility.HtmlEncode(h)).Append("</th>")
+        Next
+        sb.Append("</tr>")
+        For Each r As DataRow In weekly.Rows
+            sb.Append("<tr>")
+            Cell(sb, r("Flock"), True) : Cell(sb, r("AgeWeek"), False) : Cell(sb, DateText(r("WeekFrom")), True) : Cell(sb, DateText(r("WeekTo")), True)
+            For Each c As String In WeekCols
+                Dim v As Object = r(c)
+                Cell(sb, If(Convert.IsDBNull(v), v, CObj(Math.Round(FeedPerChickData.Num(v), WeekDecimals(c)))), False)
+            Next
+            sb.Append("</tr>")
+        Next
+        sb.Append("</table>")
+        Return sb.ToString()
+    End Function
+
+    Private Shared Function ShortDate(ByVal v As Object) As String
+        If v Is Nothing OrElse Convert.IsDBNull(v) Then Return ""
+        Return CDate(v).ToString("dd-MM-yy", CultureInfo.InvariantCulture)
+    End Function
+
+    Private Shared Function DateText(ByVal v As Object) As String
+        If v Is Nothing OrElse Convert.IsDBNull(v) Then Return ""
+        Return CDate(v).ToString(ShowDate, CultureInfo.InvariantCulture)
+    End Function
 
     ' ------------------------------------------------------------------ helpers
 

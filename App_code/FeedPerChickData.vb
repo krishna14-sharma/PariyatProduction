@@ -62,6 +62,86 @@ Public NotInheritable Class FeedPerChickData
         End Get
     End Property
 
+    ''' <summary>
+    ''' Week by week (flock age week = DATEDIFF(day, hatch date, date) / 7, as in the other reports) for the same
+    ''' flocks as the main table. Feed and eggs by entry date, chicks by loading date.
+    ''' </summary>
+    Public Shared ReadOnly Property WeeklySql As String
+        Get
+            Return _
+                "select w.flock_no as Flock, w.wk as AgeWeek, min(w.d) as WeekFrom, max(w.d) as WeekTo, " &
+                "sum(w.ff) / 1000.0 as FemaleFeedKg, sum(w.fm) / 1000.0 as MaleFeedKg, sum(w.eggs) as Eggs, sum(w.he) as HatchingEggs, " &
+                "sum(w.chicks) as Chicks, sum(w.supply) as SaleableChicks " &
+                "from (" &
+                "  select d.flock_no, try_cast(d.entry_date as date) as d, try_cast(d.feed_qty_female as float) as ff, try_cast(d.feed_qty_male as float) as fm, " &
+                "  0.0 as eggs, 0.0 as he, 0.0 as chicks, 0.0 as supply, f.hatch_date, datediff(day, f.hatch_date, try_cast(d.entry_date as date)) / 7 as wk " &
+                "  from tmp_daily_entry d join flock_master f on f.flock_no = d.flock_no where " & String.Format(InWindow, "d.entry_date") &
+                "  union all " &
+                "  select e.flock_no, try_cast(e.entry_date as date), 0.0, 0.0, try_cast(e.total_eggs as float), try_cast(e.hatch_eggs as float), 0.0, 0.0, " &
+                "  f.hatch_date, datediff(day, f.hatch_date, try_cast(e.entry_date as date)) / 7 " &
+                "  from daily_eggcollection e join flock_master f on f.flock_no = e.flock_no where " & String.Format(InWindow, "e.entry_date") &
+                "  union all " &
+                "  select h.flock_no, try_cast(h.loading_date as date), 0.0, 0.0, 0.0, 0.0, " & HatchSum("_chicks") & ", " & HatchSum("_supply") & ", " &
+                "  f.hatch_date, datediff(day, f.hatch_date, try_cast(h.loading_date as date)) / 7 " &
+                "  from hatch_production h join flock_master f on f.flock_no = h.flock_no where " & String.Format(InWindow, "h.loading_date") &
+                "  union all " &
+                "  select h.flock_no, try_cast(h.loading_date as date), 0.0, 0.0, 0.0, 0.0, " & HatchSum("_chicks") & ", " & HatchSum("_supply") & ", " &
+                "  f.hatch_date, datediff(day, f.hatch_date, try_cast(h.loading_date as date)) / 7 " &
+                "  from hatch_production_sat h join flock_master f on f.flock_no = h.flock_no where " & String.Format(InWindow, "h.loading_date") &
+                ") w " &
+                "where w.wk >= 0 and w.flock_no in (select d.flock_no from tmp_daily_entry d where try_cast(d.entry_date as date) between @from and @to) " &
+                "and (@flock is null or w.flock_no = @flock) " &
+                "and (@farm is null or w.flock_no in (select s.flock_no from Shed_Entry_Data s where s.shed_loc = @farm)) " &
+                "group by w.flock_no, w.wk order by w.flock_no, w.wk"
+        End Get
+    End Property
+
+    ''' <summary>Week-by-week rows with the worked-out columns (this week and cumulative).</summary>
+    Public Shared Function LoadWeekly(ByVal fromDate As Date, ByVal toDate As Date, ByVal farmCode As String, ByVal flockNo As String,
+                                      ByVal wholeLife As Boolean, ByVal includeMaleFeed As Boolean) As DataTable
+        Dim dt As DataTable = Query(WeeklySql, Params(fromDate, toDate, farmCode, flockNo, wholeLife))
+        AddWeeklyFigures(dt, includeMaleFeed)
+        Return dt
+    End Function
+
+    ''' <summary>
+    ''' Per week: total feed, feed per chick / per HE for that week, and the running totals from the first week shown
+    ''' (cumulative feed per chick = all feed so far / all chicks so far). Rows must be ordered by flock, week.
+    ''' </summary>
+    Public Shared Sub AddWeeklyFigures(ByVal dt As DataTable, ByVal includeMaleFeed As Boolean)
+        For Each name As String In New String() {"FeedKg", "FeedPerChickKg", "FeedPerHatchingEggG", "CumFeedKg", "CumChicks", "CumHatchingEggs", "CumFeedPerChickKg", "CumFeedPerHatchingEggG"}
+            If Not dt.Columns.Contains(name) Then dt.Columns.Add(name, GetType(Double))
+        Next
+        Dim flock As String = Nothing
+        Dim cumFeed As Double = 0, cumChicks As Double = 0, cumHE As Double = 0
+        For Each r As DataRow In dt.Rows
+            Dim thisFlock As String = Convert.ToString(r("Flock"))
+            If thisFlock <> flock Then
+                flock = thisFlock : cumFeed = 0 : cumChicks = 0 : cumHE = 0
+            End If
+            Dim feed As Double = Num(r("FemaleFeedKg")) + If(includeMaleFeed, Num(r("MaleFeedKg")), 0)
+            r("FeedKg") = feed
+            SetRatio(r, "FeedPerChickKg", feed, Num(r("Chicks")), 1)
+            SetRatio(r, "FeedPerHatchingEggG", feed, Num(r("HatchingEggs")), 1000)
+            cumFeed += feed : cumChicks += Num(r("Chicks")) : cumHE += Num(r("HatchingEggs"))
+            r("CumFeedKg") = cumFeed
+            r("CumChicks") = cumChicks
+            r("CumHatchingEggs") = cumHE
+            SetRatio(r, "CumFeedPerChickKg", cumFeed, cumChicks, 1)
+            SetRatio(r, "CumFeedPerHatchingEggG", cumFeed, cumHE, 1000)
+        Next
+    End Sub
+
+    Private Shared Function Params(ByVal fromDate As Date, ByVal toDate As Date, ByVal farmCode As String, ByVal flockNo As String, ByVal wholeLife As Boolean) As List(Of SqlParameter)
+        Dim prms As New List(Of SqlParameter)()
+        prms.Add(New SqlParameter("@from", SqlDbType.Date) With {.Value = fromDate})
+        prms.Add(New SqlParameter("@to", SqlDbType.Date) With {.Value = toDate})
+        prms.Add(New SqlParameter("@farm", SqlDbType.NVarChar, 100) With {.Value = If(String.IsNullOrEmpty(farmCode), CObj(DBNull.Value), farmCode)})
+        prms.Add(New SqlParameter("@flock", SqlDbType.NVarChar, 100) With {.Value = If(String.IsNullOrEmpty(flockNo), CObj(DBNull.Value), flockNo)})
+        prms.Add(New SqlParameter("@life", SqlDbType.Int) With {.Value = If(wholeLife, 1, 0)})
+        Return prms
+    End Function
+
     ''' <summary>Runs the query and adds the worked-out columns (total feed, feed per chick / egg).</summary>
     Public Shared Function Load(ByVal fromDate As Date, ByVal toDate As Date, ByVal farmCode As String, ByVal flockNo As String,
                                 ByVal wholeLife As Boolean, ByVal includeMaleFeed As Boolean) As DataTable

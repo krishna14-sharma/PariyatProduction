@@ -57,6 +57,7 @@
                             <li><a class="dropdown-item" href="~/misreports/mis_flockprod_report.aspx" runat="server">Flock Production</a></li>
                             <li><a class="dropdown-item" href="~/misreports/mis_floc_prod_consoli.aspx" runat="server">Flock Prod. (Consolidate)</a></li>
                               <li><a class="dropdown-item" href="~/misreports/mis_chicksperbird.aspx" runat="server">Chicks Per Bird</a></li>
+                            <a class="dropdown-item" href="~/misreports/ChicksPerBirdGroup.aspx" runat="server">Chicks Per Bird (Flock Group)</a>
                             <li><a class="dropdown-item" href="~/misreports/weekly_egg_data.aspx" runat="server">Weekly Egg (Shed Wise)</a></li> 
                             <li><a class="dropdown-item" href="~/misreports/WeeklyEggdata_comm.aspx" runat="server">Weekly Egg (Consolidated)</a></li>      
                             <li><a class="dropdown-item" href="~/misreports/weekly_stock_data.aspx" runat="server">Weekly Bird Stock</a></li> 

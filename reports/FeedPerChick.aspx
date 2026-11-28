@@ -109,6 +109,11 @@
             <asp:Literal ID="litEmpty" runat="server" />
         </div>
 
+        <h4 class="fpc-h4">Week by week</h4>
+        <p class="fpc-period">Each flock by age week. <strong>Cum. feed / chick</strong> = all feed so far ÷ all chicks so far – the steadier figure.
+            Feed / chick for a single week compares that week's feed with chicks hatched that week (from eggs laid about 3–4 weeks earlier).</p>
+        <asp:Literal ID="litWeekly" runat="server" />
+
         <div class="fpc-notes">
             <strong>How it is worked out</strong>
             <ul>
